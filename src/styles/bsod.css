@@ -1,0 +1,51 @@
+:root {
+  /* Authentic Windows BSOD colors */
+  --bsod-blue: #0000AA;
+  --bsod-text: #FFFFFF;
+  --bsod-gray: #AAAAAA;
+
+  /* CRT effects */
+  --scanline-opacity: 0.15;
+  --flicker-opacity: 0.03;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bsod-blue);
+  color: var(--bsod-text);
+  font-family: 'VGA', monospace;
+  font-size: 16px;
+  line-height: 1.2;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Disable smooth scrolling for authentic feel */
+* {
+  scroll-behavior: auto !important;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--bsod-text);
+  color: var(--bsod-blue);
+}
+
+/* Pixel-perfect text rendering */
+.bsod-text {
+  text-rendering: optimizeSpeed;
+  letter-spacing: 0;
+}
