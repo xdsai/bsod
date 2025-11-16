@@ -45,13 +45,7 @@ function openModal(id: string) {
   const modal = modals.get(id);
   if (!modal) return;
 
-  // Add glitch effect
-  document.body.classList.add('glitch-active');
-  setTimeout(() => {
-    document.body.classList.remove('glitch-active');
-  }, 300);
-
-  // Show modal
+  // Show modal instantly (no glitch effect)
   modal.classList.add('active');
 
   // Focus first focusable element or modal itself

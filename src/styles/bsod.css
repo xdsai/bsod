@@ -33,9 +33,15 @@ body {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
   font-smooth: never;
+
+  /* Additional blockier text rendering */
+  text-rendering: geometricPrecision;
+  transform: scale(1.0001);
+  letter-spacing: 0.5px;
 }
 
 /* Disable ALL smooth scrolling and transitions for authentic feel */
@@ -55,6 +61,7 @@ body {
 
 /* Pixel-perfect text rendering */
 .bsod-text {
-  text-rendering: optimizeSpeed;
-  letter-spacing: 0;
+  text-rendering: geometricPrecision;
+  letter-spacing: 0.5px;
+  transform: scale(1.0001);
 }

@@ -17,22 +17,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-smooth: never;
 
-  /* Crisp edges for text rendering */
-  text-rendering: optimizeSpeed;
+  /* Aggressive pixelation settings */
+  text-rendering: geometricPrecision;
+
+  /* Force pixelation with subtle transform */
+  transform: scale(1.0001);
+
+  /* Blockier characters */
+  -webkit-text-stroke: 0.5px;
+
+  /* Less clean text spacing */
+  letter-spacing: 0.5px;
 
   /* Pixelated image rendering */
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* Apply pixelated rendering to all text elements */
 * {
   font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
   font-weight: 700;
+  letter-spacing: 0.5px;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* Ensure no font smoothing anywhere */

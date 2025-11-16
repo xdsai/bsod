@@ -8,31 +8,65 @@ import Modal from './Modal.astro';
     <p>*** Establishing Connection Protocols</p>
     <p>&nbsp;</p>
 
+    <p><strong>*** Network Interface Controller (NIC) Information:</strong></p>
+    <p>Adapter: Intel(R) PRO/1000 MT Network Connection</p>
+    <p>MAC Address: 00:1A:2B:3C:4D:5E</p>
+    <p>IPv4 Address: 192.168.1.42</p>
+    <p>IPv6 Address: fe80::21a:2bff:fe3c:4d5e</p>
+    <p>Subnet Mask: 255.255.255.0</p>
+    <p>Default Gateway: 192.168.1.1</p>
+    <p>DNS Servers: 8.8.8.8, 8.8.4.4</p>
+    <p>&nbsp;</p>
+
+    <p><strong>*** Packet Capture - Outgoing Connection Request:</strong></p>
+    <p>0000  FF FF FF FF FF FF 00 1A 2B 3C 4D 5E 08 00 45 00</p>
+    <p>0010  00 3C 1C 46 40 00 40 06 B1 E6 C0 A8 01 2A C0 A8</p>
+    <p>0020  01 01 00 50 00 19 00 00 00 00 00 00 00 00 50 02</p>
+    <p>&nbsp;</p>
+
     <p><strong>SMTP PROTOCOL [Port 25]:</strong></p>
+    <p>  Local Port: 49152</p>
+    <p>  Remote Address: mail.jndl.dev:25</p>
     <p>  Address: <a href="mailto:alex@jndl.dev" class="contact-link">alex@jndl.dev</a></p>
     <p>  Status: ACTIVE</p>
+    <p>  Packets Sent: 1,247 | Received: 1,186</p>
     <p>&nbsp;</p>
 
     <p><strong>GIT PROTOCOL [Port 9418]:</strong></p>
+    <p>  Local Port: 49153</p>
+    <p>  Remote Address: 140.82.121.4:9418</p>
     <p>  Host: <a href="https://github.com/jndl" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/jndl</a></p>
     <p>  Status: CONNECTED</p>
+    <p>  RTT: 45ms | Bandwidth: 100 Mbps</p>
     <p>&nbsp;</p>
 
     <p><strong>HTTPS PROTOCOL [Port 443]:</strong></p>
+    <p>  Local Port: 49154</p>
+    <p>  Remote Address: 13.107.42.14:443</p>
     <p>  Host: <a href="https://linkedin.com/in/jndl" target="_blank" rel="noopener noreferrer" class="contact-link">linkedin.com/in/jndl</a></p>
     <p>  Status: LISTENING</p>
+    <p>  SSL/TLS: Enabled (TLS 1.3)</p>
+    <p>&nbsp;</p>
+
+    <p><strong>*** Network Statistics:</strong></p>
+    <p>Total Packets Sent: 4,523</p>
+    <p>Total Packets Received: 4,198</p>
+    <p>Packet Loss: 0.2%</p>
+    <p>Average Latency: 42ms</p>
     <p>&nbsp;</p>
 
     <p>*** All network connections established successfully.</p>
     <p>*** Ready to receive transmissions.</p>
+    <p>*** Connection quality: EXCELLENT</p>
   </div>
 </Modal>
 
 <style>
   .contact-section p {
     margin: 0;
-    line-height: 1.3;
+    line-height: 1.25;
     font-weight: 700;
+    font-size: 13px;
   }
 
   .contact-section strong {
