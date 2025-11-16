@@ -5,37 +5,74 @@
   <div class="crt">
     <div class="crt-screen">
       <div class="bsod-content">
+        <!-- Authentic Windows XP BSOD Header -->
         <div class="bsod-header">
-          <p class="glow">A fatal exception has occurred at 0x00000000:00000000</p>
-          <p>The current application will be terminated.</p>
+          <p>A problem has been detected and Windows has been shut down to prevent damage</p>
+          <p>to your computer.</p>
+          <p>&nbsp;</p>
+          <p>PORTFOLIO_NAVIGATION_FAULT</p>
+          <p>&nbsp;</p>
+          <p>If this is the first time you've seen this Stop error screen,</p>
+          <p>restart your computer. If this screen appears again, follow</p>
+          <p>these steps:</p>
+          <p>&nbsp;</p>
+          <p>Check to make sure any new hardware or software is properly installed.</p>
+          <p>If this is a new installation, ask your hardware or software manufacturer</p>
+          <p>for any Windows updates you might need.</p>
+          <p>&nbsp;</p>
+          <p>If problems continue, disable or remove any newly installed hardware</p>
+          <p>or software. Disable BIOS memory options such as caching or shadowing.</p>
+          <p>If you need to use Safe Mode to remove or disable components, restart</p>
+          <p>your computer, press F8 to select Advanced Startup Options, and then</p>
+          <p>select Safe Mode.</p>
         </div>
 
+        <!-- Technical Information -->
+        <div class="bsod-technical">
+          <p>&nbsp;</p>
+          <p>Technical information:</p>
+          <p>&nbsp;</p>
+          <p>*** STOP: 0x0000007E (0xC0000005, 0xF7A3B2C1, 0xF8A4D3E8, 0xF8A4D0E4)</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>***  portfolio.sys - Address F7A3B2C1 base at F7A30000, DateStamp 4a5bc600</p>
+        </div>
+
+        <!-- Navigation Menu Section -->
         <div class="bsod-separator">
-          ************************************************************
+          <p>&nbsp;</p>
+          <p>===================================================================================</p>
+          <p>&nbsp;</p>
+          <p>NAVIGATION OPTIONS - SELECT TO CONTINUE:</p>
+          <p>&nbsp;</p>
         </div>
 
         <nav class="menu" role="navigation" aria-label="Main menu">
           <div class="menu-item" data-target="about" tabindex="0">
-            <span class="menu-arrow">►</span> ABOUT
+            <span class="menu-arrow">►</span> [0x01] ABOUT - System Information and Biography
           </div>
           <div class="menu-item" data-target="skills" tabindex="0">
-            <span class="menu-arrow">►</span> SKILLS
+            <span class="menu-arrow">►</span> [0x02] SKILLS - Technical Capabilities and Stack Trace
           </div>
           <div class="menu-item" data-target="blog" tabindex="0">
-            <span class="menu-arrow">►</span> BLOG
+            <span class="menu-arrow">►</span> [0x03] BLOG - Memory Dump and Articles
           </div>
           <div class="menu-item" data-target="contact" tabindex="0">
-            <span class="menu-arrow">►</span> CONTACT
+            <span class="menu-arrow">►</span> [0x04] CONTACT - Establish Network Connection
           </div>
         </nav>
 
-        <div class="bsod-separator">
-          ************************************************************
-        </div>
-
+        <!-- Footer Section -->
         <div class="bsod-footer">
-          <p>Press any menu option to continue _</p>
-          <p class="help-text">Use ↑↓ arrows or click to navigate • ENTER to select • ESC to close</p>
+          <p>&nbsp;</p>
+          <p>===================================================================================</p>
+          <p>&nbsp;</p>
+          <p>Beginning dump of physical memory</p>
+          <p>Physical memory dump complete.</p>
+          <p>Contact your system administrator or technical support group for further assistance.</p>
+          <p>&nbsp;</p>
+          <p class="help-text">KEYBOARD: ↑↓ arrows to navigate • ENTER to select • ESC to close modal</p>
+          <p class="help-text">MOUSE: Click any option to proceed</p>
         </div>
       </div>
     </div>
@@ -52,7 +89,7 @@
     background: var(--bsod-blue);
     z-index: 100;
     opacity: 0;
-    animation: fade-in 0.3s ease-out forwards;
+    animation: fade-in 0.1s steps(2, jump-start) forwards;
   }
 
   @keyframes fade-in {
@@ -62,34 +99,46 @@
   }
 
   .bsod-content {
-    padding: 40px;
-    max-width: 900px;
-    margin: 0 auto;
+    padding: 30px;
+    padding-left: 40px;
+    /* LEFT-ALIGNED like authentic Windows XP BSOD */
+    text-align: left;
+    max-width: none;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .bsod-header p,
+  .bsod-technical p,
+  .bsod-separator p,
+  .bsod-footer p {
+    margin: 0;
+    line-height: 1.3;
   }
 
   .bsod-header {
-    margin-bottom: 30px;
+    margin-bottom: 0;
   }
 
-  .bsod-header p {
-    margin: 8px 0;
+  .bsod-technical {
+    margin: 0;
   }
 
   .bsod-separator {
-    margin: 20px 0;
-    color: var(--bsod-gray);
+    margin: 0;
   }
 
   .menu {
-    margin: 30px 0;
+    margin: 0;
   }
 
   .menu-item {
-    padding: 8px 20px;
-    margin: 4px 0;
+    padding: 4px 0;
+    margin: 2px 0;
     cursor: pointer;
     position: relative;
     outline: none;
+    display: block;
   }
 
   .menu-item:hover,
@@ -101,7 +150,8 @@
 
   .menu-arrow {
     display: inline-block;
-    width: 20px;
+    width: 15px;
+    margin-right: 5px;
   }
 
   .menu-item:not(.selected) .menu-arrow {
@@ -113,29 +163,41 @@
   }
 
   .bsod-footer {
-    margin-top: 30px;
-  }
-
-  .bsod-footer p {
-    margin: 4px 0;
+    margin-top: 0;
   }
 
   .help-text {
     color: var(--bsod-gray);
     font-size: 14px;
-    margin-top: 16px;
   }
 
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .bsod-content {
-      padding: 20px;
-      font-size: 14px;
+      padding: 15px;
+      padding-left: 20px;
+      font-size: 13px;
     }
 
     .menu-item {
-      padding: 12px 16px;
+      padding: 8px 4px;
       touch-action: manipulation;
+    }
+
+    .help-text {
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bsod-content {
+      padding: 10px;
+      padding-left: 15px;
+      font-size: 11px;
+    }
+
+    .help-text {
+      font-size: 10px;
     }
   }
 </style>

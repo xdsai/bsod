@@ -1,63 +1,41 @@
 /*
- * Pixel Fonts for BSOD Portfolio
+ * Authentic Windows XP BSOD Font Configuration
  *
- * This file defines the authentic pixel fonts for the BSOD aesthetic.
- *
- * CURRENT STATUS: Using fallback fonts until authentic pixel fonts are added.
- * To get the full retro experience:
- * 1. Download PxPlus IBM VGA8 from https://int10h.org/oldschool-pc-fonts/
- * 2. Download Fixedsys Excelsior from https://github.com/kika/fixedsys
- * 3. Convert to WOFF2 format
- * 4. Place in public/fonts/
- * 5. Uncomment the src: url() lines below
+ * Windows XP Blue Screen of Death used Lucida Console font.
+ * This file configures the authentic BSOD font with proper pixelated rendering.
  */
 
-/* VGA Font - Main BSOD text font (authentic Windows BSOD) */
-@font-face {
-  font-family: 'VGA';
-  /* Uncomment when font file is available:
-  src: url('/fonts/PxPlus_IBM_VGA8.woff2') format('woff2');
-  */
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-
-  /* Fallback configuration */
-  /* Using system monospace fonts until authentic pixel font is added */
-  src: local('Courier New'), local('Courier'), local('monospace');
-}
-
-/* Fixedsys Font - Boot sequence and terminal text */
-@font-face {
-  font-family: 'Fixedsys';
-  /* Uncomment when font file is available:
-  src: url('/fonts/Fixedsys.woff2') format('woff2');
-  */
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-
-  /* Fallback configuration */
-  /* Using system monospace fonts until authentic pixel font is added */
-  src: local('Courier New'), local('Courier'), local('monospace');
-}
-
-/*
- * Additional CSS transforms to enhance the pixel aesthetic
- * when using fallback fonts
- */
 body {
-  /* Disable font smoothing for sharper, more pixelated text */
+  /* Use Lucida Console - the actual Windows XP BSOD font */
+  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
+
+  /* Disable font smoothing for authentic pixelated look */
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 
   /* Crisp edges for text rendering */
   text-rendering: optimizeSpeed;
+
+  /* Pixelated image rendering */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
-/* Optional: Apply transform for more pixelated look with fallback fonts */
-.pixelated-text {
+/* Apply pixelated rendering to all text elements */
+* {
+  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
   image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  letter-spacing: 0;
+}
+
+/* Ensure no font smoothing anywhere */
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 }

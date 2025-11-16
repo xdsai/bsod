@@ -31,7 +31,6 @@
 
 .post-item {
   margin: 20px 0;
-  transition: background 0.1s;
 }
 
 .post-item.selected {
@@ -68,7 +67,6 @@
 
 .post-arrow {
   opacity: 0;
-  transition: opacity 0.1s;
 }
 
 .post-item.selected .post-arrow,
@@ -86,7 +84,7 @@
 }
 
 .post-tags {
-  font-family: 'Fixedsys', monospace;
+  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
 }
 
 .post-description {

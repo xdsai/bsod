@@ -4,9 +4,9 @@
   --bsod-text: #FFFFFF;
   --bsod-gray: #AAAAAA;
 
-  /* CRT effects */
-  --scanline-opacity: 0.15;
-  --flicker-opacity: 0.03;
+  /* CRT effects - more aggressive */
+  --scanline-opacity: 0.25;
+  --flicker-opacity: 0.08;
 }
 
 * {
@@ -24,18 +24,26 @@ html, body {
 body {
   background: var(--bsod-blue);
   color: var(--bsod-text);
-  font-family: 'VGA', monospace;
+  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
   font-size: 16px;
   line-height: 1.2;
+
+  /* Maximum pixelation */
   image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 }
 
-/* Disable smooth scrolling for authentic feel */
-* {
+/* Disable ALL smooth scrolling and transitions for authentic feel */
+*,
+*::before,
+*::after {
   scroll-behavior: auto !important;
+  transition: none !important;
+  animation-timing-function: steps(1, jump-start) !important;
 }
 
 /* Selection styling */

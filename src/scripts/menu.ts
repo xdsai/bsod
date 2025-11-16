@@ -2,8 +2,8 @@
 let selectedIndex = 0;
 const menuItems = Array.from(document.querySelectorAll('.menu-item'));
 
-// Initialize menu when boot completes
-window.addEventListener('boot-complete', () => {
+// Initialize menu immediately on page load
+document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('bsod-menu');
   if (menu) {
     menu.style.display = 'block';

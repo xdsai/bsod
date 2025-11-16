@@ -6,7 +6,7 @@
   overflow: hidden;
 }
 
-/* Scanlines effect */
+/* Scanlines effect - more aggressive */
 .crt::before {
   content: '';
   position: absolute;
@@ -17,13 +17,13 @@
   pointer-events: none;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.15) 0px,
-    rgba(0, 0, 0, 0.15) 1px,
+    rgba(0, 0, 0, 0.25) 0px,
+    rgba(0, 0, 0, 0.25) 1px,
     transparent 1px,
     transparent 2px
   );
   z-index: 1000;
-  animation: scanline 8s linear infinite;
+  animation: scanline 6s steps(100, jump-start) infinite;
 }
 
 @keyframes scanline {
@@ -35,7 +35,7 @@
   }
 }
 
-/* Screen flicker */
+/* Screen flicker - more aggressive */
 .crt::after {
   content: '';
   position: absolute;
@@ -47,7 +47,7 @@
   background: rgba(255, 255, 255, var(--flicker-opacity));
   opacity: 0;
   z-index: 999;
-  animation: flicker 0.15s infinite;
+  animation: flicker 0.1s steps(4, jump-start) infinite;
 }
 
 @keyframes flicker {
@@ -116,39 +116,39 @@
   }
 }
 
-/* Phosphor glow on text */
+/* Phosphor glow on text - more aggressive */
 .glow {
   text-shadow:
-    0 0 2px rgba(255, 255, 255, 0.8),
-    0 0 4px rgba(255, 255, 255, 0.6),
-    0 0 8px rgba(170, 170, 255, 0.4);
+    0 0 3px rgba(255, 255, 255, 1),
+    0 0 6px rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(170, 170, 255, 0.6);
 }
 
-/* Screen curvature (subtle) */
+/* Screen with no smooth transforms */
 .crt-screen {
   position: relative;
   width: 100%;
   height: 100%;
   transform: perspective(1000px) rotateX(0deg);
-  filter: contrast(1.1) brightness(1.05);
+  filter: contrast(1.2) brightness(1.1);
 }
 
-/* Glitch effect (for transitions) */
+/* Glitch effect - blockier, no smooth transitions */
 @keyframes glitch {
   0% {
     transform: translate(0);
   }
   20% {
-    transform: translate(-2px, 2px);
+    transform: translate(-3px, 3px);
   }
   40% {
-    transform: translate(-2px, -2px);
+    transform: translate(-3px, -3px);
   }
   60% {
-    transform: translate(2px, 2px);
+    transform: translate(3px, 3px);
   }
   80% {
-    transform: translate(2px, -2px);
+    transform: translate(3px, -3px);
   }
   100% {
     transform: translate(0);
@@ -156,22 +156,22 @@
 }
 
 .glitch-active {
-  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: glitch 0.2s steps(5, jump-start) both;
 }
 
-/* Screen shake (for crash effect) */
+/* Screen shake - more aggressive, blockier */
 @keyframes screen-shake {
   0%, 100% {
     transform: translate(0, 0);
   }
   10%, 30%, 50%, 70%, 90% {
-    transform: translate(-4px, 2px);
+    transform: translate(-6px, 3px);
   }
   20%, 40%, 60%, 80% {
-    transform: translate(4px, -2px);
+    transform: translate(6px, -3px);
   }
 }
 
 .screen-shake {
-  animation: screen-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: screen-shake 0.4s steps(10, jump-start) both;
 }

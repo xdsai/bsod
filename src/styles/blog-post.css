@@ -3,6 +3,9 @@
   max-width: 900px;
   margin: 0 auto;
   min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .post-header {
@@ -24,18 +27,17 @@
 }
 
 .post-tags {
-  font-family: 'Fixedsys', monospace;
+  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
 }
 
 .reading-mode-btn {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid var(--bsod-text);
   color: var(--bsod-text);
-  font-family: 'VGA', monospace;
+  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
   font-size: 14px;
   padding: 8px 16px;
   cursor: pointer;
-  transition: all 0.1s;
 }
 
 .reading-mode-btn:hover {
@@ -102,7 +104,7 @@
 .prose code {
   background: rgba(0, 0, 0, 0.3);
   padding: 2px 6px;
-  font-family: 'Fixedsys', monospace;
+  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
   font-size: 14px;
 }
 
