@@ -124,6 +124,15 @@
     0 0 12px rgba(170, 170, 255, 0.6);
 }
 
+/* Reduce glow intensity on mobile to prevent text blur */
+@media (max-width: 768px) {
+  .glow {
+    text-shadow:
+      0 0 1px rgba(255, 255, 255, 0.4),
+      0 0 2px rgba(255, 255, 255, 0.3);
+  }
+}
+
 /* Screen with no smooth transforms */
 .crt-screen {
   position: relative;
