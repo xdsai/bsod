@@ -1,15 +1,28 @@
 /*
- * Authentic Windows XP BSOD Font Configuration
+ * Authentic Windows BSOD Font Configuration
  *
- * Using VT323 - a truly pixelated bitmap terminal font from Google Fonts.
- * This provides an authentic retro BSOD appearance.
+ * Primary: Lucida BSOD - authentic Windows BSOD bitmap font from FontStruct
+ * Fallback: VT323 - pixelated terminal font from Google Fonts
+ *
+ * Note: Lucida BSOD must be manually downloaded from:
+ * https://fontstruct.com/fontstructions/show/2322862/lucida-bsod
  */
 
+/* Import VT323 as fallback from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=block');
 
+/* Lucida BSOD font-face declaration */
+@font-face {
+  font-family: 'Lucida BSOD';
+  src: url('/fonts/lucida-bsod.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Show fallback immediately, swap when loaded */
+}
+
 body {
-  /* Use VT323 - authentic pixelated terminal font */
-  font-family: 'VT323', monospace;
+  /* Use Lucida BSOD with VT323 fallback */
+  font-family: 'Lucida BSOD', 'VT323', monospace;
 
   /* BOLD text like authentic Windows XP BSOD */
   font-weight: 700;
@@ -40,7 +53,7 @@ body {
 
 /* Apply pixelated rendering to all text elements */
 * {
-  font-family: 'VT323', monospace;
+  font-family: 'Lucida BSOD', 'VT323', monospace;
   font-weight: 700;
   letter-spacing: 0.5px;
   image-rendering: pixelated;

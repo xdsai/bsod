@@ -24,7 +24,7 @@ html, body {
 body {
   background: var(--bsod-blue);
   color: var(--bsod-text);
-  font-family: 'VT323', monospace;
+  font-family: 'Lucida BSOD', 'VT323', monospace;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.2;

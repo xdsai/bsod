@@ -1,50 +1,59 @@
-# Pixel Fonts for BSOD Portfolio
+# Fonts for BSOD Portfolio
 
-This directory should contain authentic pixel fonts for the BSOD aesthetic.
+This directory contains font files for the authentic BSOD aesthetic.
 
-## Required Fonts
+## Required Font: Lucida BSOD
 
-### 1. PxPlus IBM VGA8 (or Perfect DOS VGA 437)
-- **Purpose**: Main BSOD text font (authentic Windows BSOD font)
+**Lucida BSOD** is an authentic Windows BSOD-style bitmap font that provides the perfect retro aesthetic for this portfolio.
+
+### Download Instructions
+
+The Lucida BSOD font must be manually downloaded from FontStruct:
+
+1. **Visit FontStruct**: Go to https://fontstruct.com/fontstructions/show/2322862/lucida-bsod
+2. **Download the font**: Click the "Download" button on the page
+3. **Save the TTF file**: Save the downloaded TTF file as `lucida-bsod.ttf`
+4. **Place in this directory**: Move `lucida-bsod.ttf` to `/public/fonts/` (this directory)
+
+### Current Status
+
+**PLACEHOLDER MODE**: The site is currently using VT323 from Google Fonts as a fallback.
+
+- ✅ VT323 provides a good pixelated retro aesthetic
+- ⚠️ For the most authentic BSOD look, download Lucida BSOD from the link above
+- 📁 Once downloaded, the site will automatically use Lucida BSOD instead of VT323
+
+### Fallback Behavior
+
+The CSS is configured with a smart fallback system:
+1. **Lucida BSOD** (if downloaded and placed in this directory)
+2. **VT323** (loaded from Google Fonts as backup)
+3. **monospace** (system fallback)
+
+This ensures the site always works, even without the custom font.
+
+## Alternative Fonts
+
+If you prefer a different retro aesthetic, you could also try:
+
+### PxPlus IBM VGA8
 - **Source**: https://int10h.org/oldschool-pc-fonts/
-- **Download**: Get the "PxPlus IBM VGA8" font
-- **Format**: Convert to WOFF2 for web use
-- **File**: `PxPlus_IBM_VGA8.woff2`
+- Authentic DOS/Windows font
 
-### 2. Fixedsys Excelsior
-- **Purpose**: Boot sequence and terminal text
+### Fixedsys Excelsior
 - **Source**: https://github.com/kika/fixedsys
-- **Format**: Convert to WOFF2 for web use
-- **File**: `Fixedsys.woff2`
+- Classic Windows 9x font
 
 ## Font Conversion
 
-To convert TTF/OTF fonts to WOFF2:
+If you need to convert fonts to web formats (WOFF2 for better compression):
 
 ### Online Tools
 - https://cloudconvert.com/ttf-to-woff2
 - https://everythingfonts.com/ttf-to-woff2
 
-### Command Line (fonttools)
+### Command Line
 ```bash
 pip install fonttools brotli
 pyftsubset font.ttf --output-file=font.woff2 --flavor=woff2
 ```
-
-## Alternative: Using Web Fonts
-
-If you prefer not to download fonts, the CSS file is configured to fall back to:
-- `Courier New` (monospace system font)
-- Generic `monospace` font
-
-These provide a similar retro aesthetic without requiring font downloads.
-
-## Current Status
-
-**PLACEHOLDER MODE**: The fonts.css file is currently set up with fallback fonts only.
-To get the authentic BSOD look, please:
-
-1. Download the fonts from the sources above
-2. Convert them to WOFF2 format
-3. Place the WOFF2 files in this directory
-4. The CSS will automatically use them (already configured)
