@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import '../../styles/fonts.css';
+import '../../styles/bsod.css';
+import '../../styles/crt-effects.css';
+import '../../styles/blog-post.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{post.data.title} :: ERROR_LOG</title>
+  <meta name="description" content={post.data.description}>
+</head>
+<body>
+  <div class="crt">
+    <div class="crt-screen">
+      <div class="post-container">
+        <header class="post-header">
+          <h1 class="post-title glow">{post.data.title}</h1>
+          <div class="post-meta">
+            <time datetime={post.data.date.toISOString()}>
+              {formatDate(post.data.date)}
+            </time>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <span class="post-tags">
+                {post.data.tags.map(tag => `[${tag}]`).join(' ')}
+              </span>
+            )}
+          </div>
+          <button id="reading-mode-toggle" class="reading-mode-btn" aria-label="Toggle reading mode">
+            <span class="toggle-icon">□</span> Reading Mode
+          </button>
+        </header>
+
+        <div class="post-separator">
+          ════════════════════════════════════════════════════════════
+        </div>
+
+        <article class="post-content prose">
+          <Content />
+        </article>
+
+        <div class="post-separator">
+          ════════════════════════════════════════════════════════════
+        </div>
+
+        <footer class="post-footer">
+          <a href="/blog" class="back-link">← Back to all posts</a>
+          <a href="/" class="home-link">← Return to main menu</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('reading-mode-toggle');
+    const body = document.body;
+    const icon = toggle?.querySelector('.toggle-icon');
+
+    // Check for saved preference
+    const savedMode = localStorage.getItem('reading-mode');
+    if (savedMode === 'true') {
+      body.classList.add('reading-mode');
+      if (icon) icon.textContent = '■';
+    }
+
+    toggle?.addEventListener('click', () => {
+      body.classList.toggle('reading-mode');
+      const isActive = body.classList.contains('reading-mode');
+      if (icon) icon.textContent = isActive ? '■' : '□';
+      localStorage.setItem('reading-mode', String(isActive));
+    });
+
+    // ESC to go back
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        window.location.href = '/blog';
+      }
+    });
+  </script>
+</body>
+</html>
