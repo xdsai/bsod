@@ -1,0 +1,73 @@
+---
+import Modal from './Modal.astro';
+---
+
+<Modal id="contact" title="CONTACT :: NETWORK_CONNECTIONS">
+  <div class="contact-section glow">
+    <h2>▬▬▬ GET IN TOUCH ▬▬▬</h2>
+
+    <div class="contact-item">
+      <span class="contact-label">EMAIL:</span>
+      <a href="mailto:alex@jndl.dev" class="contact-link">
+        alex@jndl.dev
+      </a>
+    </div>
+
+    <div class="contact-item">
+      <span class="contact-label">GITHUB:</span>
+      <a href="https://github.com/jndl" target="_blank" rel="noopener noreferrer" class="contact-link">
+        github.com/jndl
+      </a>
+    </div>
+
+    <div class="contact-item">
+      <span class="contact-label">LINKEDIN:</span>
+      <a href="https://linkedin.com/in/jndl" target="_blank" rel="noopener noreferrer" class="contact-link">
+        linkedin.com/in/jndl
+      </a>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <p>Feel free to reach out for collaborations, questions, or just to say hi!</p>
+    </div>
+  </div>
+</Modal>
+
+<style>
+  .contact-section h2 {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .contact-item {
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .contact-label {
+    min-width: 100px;
+    color: var(--bsod-gray);
+  }
+
+  .contact-link {
+    color: var(--bsod-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--bsod-text);
+    transition: all 0.1s;
+  }
+
+  .contact-link:hover {
+    background: var(--bsod-text);
+    color: var(--bsod-blue);
+    text-shadow: none;
+  }
+
+  @media (max-width: 768px) {
+    .contact-item {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+</style>

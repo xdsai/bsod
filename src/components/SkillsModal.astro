@@ -1,0 +1,81 @@
+---
+import Modal from './Modal.astro';
+---
+
+<Modal id="skills" title="SKILLS :: SYSTEM_CAPABILITIES">
+  <div class="skills-section glow">
+    <h2>▬▬▬ TECHNICAL SKILLS ▬▬▬</h2>
+
+    <div class="skill-category">
+      <h3>► Languages</h3>
+      <ul>
+        <li>JavaScript / TypeScript</li>
+        <li>Python</li>
+        <li>HTML / CSS</li>
+        <li>[Add your languages]</li>
+      </ul>
+    </div>
+
+    <div class="skill-category">
+      <h3>► Frameworks & Libraries</h3>
+      <ul>
+        <li>React / Next.js</li>
+        <li>Node.js</li>
+        <li>Astro</li>
+        <li>[Add your frameworks]</li>
+      </ul>
+    </div>
+
+    <div class="skill-category">
+      <h3>► Tools & Technologies</h3>
+      <ul>
+        <li>Git / GitHub</li>
+        <li>Docker</li>
+        <li>VS Code</li>
+        <li>[Add your tools]</li>
+      </ul>
+    </div>
+
+    <div class="skill-category">
+      <h3>► Areas of Interest</h3>
+      <ul>
+        <li>Web Development</li>
+        <li>UI/UX Design</li>
+        <li>[Add your interests]</li>
+      </ul>
+    </div>
+  </div>
+</Modal>
+
+<style>
+  .skills-section h2 {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .skill-category {
+    margin-bottom: 24px;
+  }
+
+  .skill-category h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--bsod-text);
+  }
+
+  .skill-category ul {
+    list-style: none;
+    padding-left: 20px;
+  }
+
+  .skill-category li {
+    margin: 6px 0;
+    position: relative;
+  }
+
+  .skill-category li::before {
+    content: '•';
+    position: absolute;
+    left: -15px;
+  }
+</style>
