@@ -25,35 +25,19 @@
           <p>F7A30010  2E 30 20 2D 20 4C 4F 41 44 45 44 20 53 55 43 43</p>
           <p>F7A30020  45 53 53 46 55 4C 4C 59 20 41 54 20 30 78 46 37</p>
           <p>&nbsp;</p>
-          <p>Dumping physical memory to disk: 0</p>
-          <p>Physical memory dump FAILED with status 0xC0000010</p>
           <p>Beginning dump of physical memory</p>
-          <p>Dumping physical memory to disk: 5</p>
-          <p>Dumping physical memory to disk: 15</p>
-          <p>Dumping physical memory to disk: 30</p>
           <p>Physical memory dump complete.</p>
           <p>&nbsp;</p>
-          <p>*** Stack Trace:</p>
-          <p>F8A4D3E8  portfolio!NavigationHandler+0x2C1</p>
-          <p>F8A4D3F0  portfolio!MenuDispatcher+0x158</p>
-          <p>F8A4D408  nt!KiDispatchException+0x123</p>
-          <p>F8A4D428  nt!CommonDispatchException+0x4D</p>
-          <p>&nbsp;</p>
           <p>*** Driver Information:</p>
-          <p>portfolio.sys    - 2024/11/16 12:34:56 - Base 0xF7A30000 Size 0x12000</p>
-          <p>skills.sys       - 2024/11/15 08:22:11 - Base 0xF7A50000 Size 0x08000</p>
-          <p>contact.sys      - 2024/11/14 16:45:33 - Base 0xF7A60000 Size 0x04000</p>
+          <p>portfolio.sys    - Base 0xF7A30000 Size 0x12000</p>
+          <p>skills.sys       - Base 0xF7A50000 Size 0x08000</p>
           <p>&nbsp;</p>
           <p>*** System Information:</p>
-          <p>RAM: 16384 MB Physical Memory Available</p>
-          <p>CPU: Intel Core Developer Processor @ 3.40GHz (8 cores)</p>
+          <p>RAM: 16384 MB | CPU: Intel Core Developer @ 3.40GHz (8 cores)</p>
           <p>Kernel: Windows NT 5.1.2600 Service Pack 3 Build 2600</p>
+          <p>Remote IP Address: <span id="public-ip">Detecting...</span></p>
           <p>&nbsp;</p>
-          <p>*** Debug Port Information:</p>
-          <p>Kernel Debugger: Enabled</p>
-          <p>Debug Transport: COM1</p>
-          <p>Baud Rate: 115200</p>
-          <p>Data Bits: 8, Parity: None, Stop Bits: 1</p>
+          <p>*** Debug Port: COM1 @ 115200 baud</p>
         </div>
 
         <!-- Navigation Menu Section -->
@@ -273,5 +257,23 @@
     }
   }
 </style>
+
+<script>
+  // Fetch public IP asynchronously (won't block page load)
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      const ipElement = document.getElementById('public-ip');
+      if (ipElement) {
+        ipElement.textContent = data.ip;
+      }
+    })
+    .catch(() => {
+      const ipElement = document.getElementById('public-ip');
+      if (ipElement) {
+        ipElement.textContent = 'Unknown';
+      }
+    });
+</script>
 
 <script src="../scripts/menu.ts"></script>

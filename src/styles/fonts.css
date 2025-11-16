@@ -1,13 +1,15 @@
 /*
  * Authentic Windows XP BSOD Font Configuration
  *
- * Windows XP Blue Screen of Death used Lucida Console font.
- * This file configures the authentic BSOD font with proper pixelated rendering.
+ * Using VT323 - a truly pixelated bitmap terminal font from Google Fonts.
+ * This provides an authentic retro BSOD appearance.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=block');
+
 body {
-  /* Use Lucida Console - the actual Windows XP BSOD font */
-  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
+  /* Use VT323 - authentic pixelated terminal font */
+  font-family: 'VT323', monospace;
 
   /* BOLD text like authentic Windows XP BSOD */
   font-weight: 700;
@@ -38,7 +40,7 @@ body {
 
 /* Apply pixelated rendering to all text elements */
 * {
-  font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
+  font-family: 'VT323', monospace;
   font-weight: 700;
   letter-spacing: 0.5px;
   image-rendering: pixelated;
