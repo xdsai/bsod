@@ -1,0 +1,156 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<div class="modal" id={`modal-${id}`} role="dialog" aria-modal="true" aria-labelledby={`modal-title-${id}`}>
+  <div class="modal-backdrop"></div>
+  <div class="modal-window">
+    <div class="modal-titlebar">
+      <div class="modal-title" id={`modal-title-${id}`}>{title}</div>
+      <button class="modal-close" aria-label="Close modal">×</button>
+    </div>
+    <div class="modal-content">
+      <slot />
+    </div>
+    <div class="modal-footer">
+      <p class="modal-hint">Press ESC to close</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal.active {
+    display: flex;
+  }
+
+  .modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .modal-window {
+    position: relative;
+    background: var(--bsod-blue);
+    border: 3px solid var(--bsod-text);
+    box-shadow:
+      0 0 0 1px #000,
+      4px 4px 0 0 rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    max-height: 85%;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    animation: modal-appear 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes modal-appear {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .modal-titlebar {
+    background: var(--bsod-text);
+    color: var(--bsod-blue);
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--bsod-blue);
+  }
+
+  .modal-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--bsod-blue);
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 1;
+    font-family: 'VGA', monospace;
+  }
+
+  .modal-close:hover {
+    background: var(--bsod-blue);
+    color: var(--bsod-text);
+  }
+
+  .modal-content {
+    padding: 30px;
+    overflow-y: auto;
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  .modal-content::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .modal-content::-webkit-scrollbar-thumb {
+    background: var(--bsod-text);
+    border: 2px solid var(--bsod-blue);
+  }
+
+  .modal-footer {
+    padding: 8px 12px;
+    border-top: 2px solid var(--bsod-text);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .modal-hint {
+    color: var(--bsod-gray);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .modal-window {
+      max-width: 95%;
+      max-height: 90%;
+      width: auto;
+    }
+
+    .modal-content {
+      padding: 20px;
+    }
+  }
+</style>
