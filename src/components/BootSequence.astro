@@ -1,0 +1,119 @@
+---
+---
+
+<div id="boot-sequence" class="boot-container">
+  <div class="boot-content">
+    <div class="boot-line" data-delay="0">Linux version 5.15.0-generic</div>
+    <div class="boot-line" data-delay="100">Command line: BOOT_IMAGE=/boot/vmlinuz root=/dev/sda1</div>
+    <div class="boot-line" data-delay="200">Kernel command line: quiet splash</div>
+    <div class="boot-line" data-delay="400">Memory: 16384MB RAM</div>
+    <div class="boot-line" data-delay="600">CPU: 8 x 3.6GHz</div>
+    <div class="boot-line" data-delay="800">[  OK  ] Started System Logging Service</div>
+    <div class="boot-line" data-delay="1000">[  OK  ] Started Network Manager</div>
+    <div class="boot-line" data-delay="1200">[  OK  ] Started User Manager</div>
+    <div class="boot-line" data-delay="1400">[  OK  ] Reached target Multi-User System</div>
+    <div class="boot-line" data-delay="1800">[  OK  ] Started GNOME Display Manager</div>
+    <div class="boot-line error" data-delay="2200">[FAILED] Failed to start Portfolio Service</div>
+    <div class="boot-line error" data-delay="2400">[FAILED] Critical system error detected</div>
+    <div class="boot-line error" data-delay="2600">[FAILED] Kernel panic - unable to continue</div>
+    <div class="boot-line error" data-delay="2800">Entering emergency mode...</div>
+  </div>
+</div>
+
+<style>
+  .boot-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #0f0;
+    font-family: 'Fixedsys', monospace;
+    font-size: 14px;
+    padding: 20px;
+    overflow: hidden;
+    z-index: 10000;
+  }
+
+  .boot-content {
+    max-width: 100%;
+  }
+
+  .boot-line {
+    opacity: 0;
+    margin: 4px 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  .boot-line.visible {
+    opacity: 1;
+    animation: boot-appear 0.05s ease-out;
+  }
+
+  .boot-line.error {
+    color: #ff3333;
+    font-weight: bold;
+  }
+
+  @keyframes boot-appear {
+    from {
+      opacity: 0;
+      transform: translateX(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .boot-container.fade-out {
+    animation: fade-to-blue 0.5s ease-out forwards;
+  }
+
+  @keyframes fade-to-blue {
+    0% {
+      background: #000;
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      background: #0000AA;
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const bootSequence = document.getElementById('boot-sequence');
+  const bootLines = document.querySelectorAll('.boot-line');
+
+  // Show boot lines sequentially
+  bootLines.forEach((line) => {
+    const delay = parseInt(line.getAttribute('data-delay') || '0');
+    setTimeout(() => {
+      line.classList.add('visible');
+    }, delay);
+  });
+
+  // After all lines shown, trigger crash and transition
+  const totalDuration = 2800 + 500; // Last line delay + extra wait
+  setTimeout(() => {
+    // Screen shake effect
+    bootSequence.classList.add('screen-shake');
+
+    setTimeout(() => {
+      // Fade out and show BSOD
+      bootSequence.classList.add('fade-out');
+
+      setTimeout(() => {
+        bootSequence.style.display = 'none';
+        // Dispatch event to show BSOD menu
+        window.dispatchEvent(new CustomEvent('boot-complete'));
+      }, 500);
+    }, 500);
+  }, totalDuration);
+</script>
