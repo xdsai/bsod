@@ -1,0 +1,279 @@
+---
+---
+
+<div id="bsod-menu" class="bsod-screen" style="display: none;">
+  <div class="crt">
+    <div class="crt-screen">
+      <div class="bsod-content">
+        <!-- Concise BSOD Header -->
+        <div class="bsod-header">
+          <p>A problem has been detected and Windows has been shut down to prevent damage</p>
+          <p>to your computer.</p>
+          <p>&nbsp;</p>
+          <p>PORTFOLIO_NAVIGATION_FAULT</p>
+        </div>
+
+        <!-- Technical Information -->
+        <div class="bsod-technical">
+          <p>&nbsp;</p>
+          <p>*** STOP: 0x0000007E (0xC0000005, 0xF7A3B2C1, 0xF8A4D3E8, 0xF8A4D0E4)</p>
+          <p>*** STOP: 0x0000008E (0xC0000096, 0xF7A4C1D2, 0xF8B5E4F9, 0xF8B5E1F5)</p>
+          <p>***  portfolio.sys - Address F7A3B2C1 base at F7A30000, DateStamp 4a5bc600</p>
+          <p>&nbsp;</p>
+          <p>*** Memory Dump Preview:</p>
+          <p>F7A30000  50 4F 52 54 46 4F 4C 49 4F 20 53 59 53 20 56 31</p>
+          <p>F7A30010  2E 30 20 2D 20 4C 4F 41 44 45 44 20 53 55 43 43</p>
+          <p>F7A30020  45 53 53 46 55 4C 4C 59 20 41 54 20 30 78 46 37</p>
+          <p>&nbsp;</p>
+          <p>Beginning dump of physical memory</p>
+          <p>Physical memory dump complete.</p>
+          <p>&nbsp;</p>
+          <p>*** Driver Information:</p>
+          <p>portfolio.sys    - Base 0xF7A30000 Size 0x12000</p>
+          <p>skills.sys       - Base 0xF7A50000 Size 0x08000</p>
+          <p>&nbsp;</p>
+          <p>*** System Information:</p>
+          <p>RAM: 16384 MB | CPU: Intel Core Developer @ 3.40GHz (8 cores)</p>
+          <p>Kernel: Windows NT 5.1.2600 Service Pack 3 Build 2600</p>
+          <p>Remote IP Address: <span id="public-ip">Detecting...</span></p>
+          <p>&nbsp;</p>
+          <p>*** Debug Port: COM1 @ 115200 baud</p>
+        </div>
+
+        <!-- Navigation Menu Section -->
+        <div class="bsod-separator">
+          <p>&nbsp;</p>
+          <p class="delimiter"></p>
+          <p>&nbsp;</p>
+          <p>NAVIGATION OPTIONS - SELECT TO CONTINUE:</p>
+          <p>&nbsp;</p>
+        </div>
+
+        <nav class="menu" role="navigation" aria-label="Main menu">
+          <div class="menu-item" data-target="about" tabindex="0">
+            <span class="menu-arrow">►</span> [0x01] ABOUT - System Information and Biography
+          </div>
+          <div class="menu-item" data-target="skills" tabindex="0">
+            <span class="menu-arrow">►</span> [0x02] SKILLS - Technical Capabilities and Stack Trace
+          </div>
+          <div class="menu-item" data-target="blog" tabindex="0">
+            <span class="menu-arrow">►</span> [0x03] BLOG - Memory Dump and Articles
+          </div>
+          <div class="menu-item" data-target="contact" tabindex="0">
+            <span class="menu-arrow">►</span> [0x04] CONTACT - Establish Network Connection
+          </div>
+        </nav>
+
+        <!-- Footer Section -->
+        <div class="bsod-footer">
+          <p>&nbsp;</p>
+          <p class="delimiter"></p>
+          <p>&nbsp;</p>
+          <p class="help-text">Use ↑↓ ENTER or Click to select</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .bsod-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bsod-blue);
+    z-index: 100;
+    opacity: 0;
+    animation: fade-in 0.1s steps(2, jump-start) forwards;
+  }
+
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .bsod-content {
+    /* Use viewport units for responsive sizing */
+    padding: 1.5vh 3vw;
+    padding-left: 4vw;
+    text-align: left;
+    max-width: none;
+    height: 100vh;
+    overflow: hidden; /* NO SCROLLING */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: clamp(8px, 1.3vw, 13px);
+    line-height: 1.1;
+  }
+
+  .bsod-header p,
+  .bsod-technical p,
+  .bsod-separator p,
+  .bsod-footer p {
+    margin: 0;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+
+  .bsod-header {
+    margin-bottom: 0.5vh;
+  }
+
+  .bsod-technical {
+    margin: 0.5vh 0;
+  }
+
+  .bsod-separator {
+    margin: 0.5vh 0;
+  }
+
+  /* Responsive delimiter using CSS */
+  .delimiter {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .delimiter::before {
+    content: '===================================================================================';
+    display: block;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+
+  .menu {
+    margin: 0.5vh 0;
+  }
+
+  .menu-item {
+    padding: 0.2vh 0;
+    margin: 0.1vh 0;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    display: block;
+    font-weight: 700;
+  }
+
+  .menu-item:hover,
+  .menu-item:focus,
+  .menu-item.selected {
+    background: var(--bsod-text);
+    color: var(--bsod-blue);
+  }
+
+  .menu-arrow {
+    display: inline-block;
+    width: 15px;
+    margin-right: 5px;
+  }
+
+  .menu-item:not(.selected) .menu-arrow {
+    opacity: 0;
+  }
+
+  .menu-item.selected .menu-arrow {
+    opacity: 1;
+  }
+
+  .bsod-footer {
+    margin-top: 0.5vh;
+  }
+
+  .help-text {
+    color: var(--bsod-gray);
+    font-size: clamp(9px, 1.2vw, 13px);
+    font-weight: 700;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .bsod-content {
+      padding: 2vh 4vw;
+      padding-left: 5vw;
+      font-size: clamp(9px, 2vw, 13px);
+    }
+
+    .menu-item {
+      padding: 0.5vh 0;
+      touch-action: manipulation;
+    }
+
+    .help-text {
+      font-size: clamp(8px, 1.5vw, 11px);
+    }
+
+    .delimiter::before {
+      content: '============================================================';
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bsod-content {
+      padding: 1.5vh 3vw;
+      padding-left: 4vw;
+      font-size: clamp(8px, 2.2vw, 11px);
+      line-height: 1.1;
+    }
+
+    .bsod-header p,
+    .bsod-technical p,
+    .bsod-separator p,
+    .bsod-footer p {
+      line-height: 1.1;
+    }
+
+    .help-text {
+      font-size: clamp(7px, 1.8vw, 9px);
+    }
+
+    .delimiter::before {
+      content: '========================================';
+    }
+  }
+
+  /* Landscape mobile - super compact */
+  @media (max-height: 500px) {
+    .bsod-content {
+      padding: 1vh 2vw;
+      font-size: clamp(7px, 1.4vw, 10px);
+      line-height: 1.05;
+    }
+
+    .bsod-header,
+    .bsod-technical,
+    .bsod-separator,
+    .menu,
+    .bsod-footer {
+      margin: 0.3vh 0;
+    }
+
+    .menu-item {
+      padding: 0.2vh 0;
+      margin: 0.1vh 0;
+    }
+  }
+</style>
+
+<script>
+  // Fetch public IP asynchronously (won't block page load)
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      const ipElement = document.getElementById('public-ip');
+      if (ipElement) {
+        ipElement.textContent = data.ip;
+      }
+    })
+    .catch(() => {
+      const ipElement = document.getElementById('public-ip');
+      if (ipElement) {
+        ipElement.textContent = 'Unknown';
+      }
+    });
+</script>
+
+<script src="../scripts/menu.ts"></script>

@@ -1,0 +1,134 @@
+---
+import { getCollection } from 'astro:content';
+import '../../styles/fonts.css';
+import '../../styles/bsod.css';
+import '../../styles/crt-effects.css';
+import '../../styles/blog.css';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOG :: ERROR_LOGS</title>
+  <meta name="description" content="Blog posts and writings">
+</head>
+<body>
+  <div class="crt">
+    <div class="crt-screen">
+      <div class="blog-container">
+        <header class="blog-header">
+          <h1 class="glow">SYSTEM ERROR LOGS</h1>
+          <p>A collection of documented failures and successes</p>
+        </header>
+
+        <div class="blog-separator">
+          ════════════════════════════════════════════════════════════
+        </div>
+
+        <div class="posts-list">
+          {posts.map((post) => (
+            <article class="post-item">
+              <a href={`/blog/${post.slug}`} class="post-link">
+                <h2 class="post-title">
+                  <span class="post-arrow">►</span>
+                  {post.data.title}
+                </h2>
+                <div class="post-meta">
+                  <time datetime={post.data.date.toISOString()}>
+                    {formatDate(post.data.date)}
+                  </time>
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <span class="post-tags">
+                      {post.data.tags.map(tag => `[${tag}]`).join(' ')}
+                    </span>
+                  )}
+                </div>
+                <p class="post-description">{post.data.description}</p>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <div class="blog-separator">
+          ════════════════════════════════════════════════════════════
+        </div>
+
+        <footer class="blog-footer">
+          <a href="/" class="back-link">← Return to main menu</a>
+          <p class="help-text">Use ↑↓ arrows or click to navigate posts</p>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Keyboard navigation for posts
+    const postLinks = Array.from(document.querySelectorAll('.post-link'));
+    let selectedIndex = 0;
+
+    function selectPost(index: number) {
+      postLinks.forEach((link, i) => {
+        const item = link.closest('.post-item');
+        if (i === index) {
+          item?.classList.add('selected');
+          (link as HTMLElement).focus();
+        } else {
+          item?.classList.remove('selected');
+        }
+      });
+      selectedIndex = index;
+    }
+
+    // Initial selection
+    if (postLinks.length > 0) {
+      selectPost(0);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (postLinks.length === 0) return;
+
+      switch (e.key) {
+        case 'ArrowUp':
+          e.preventDefault();
+          selectedIndex = (selectedIndex - 1 + postLinks.length) % postLinks.length;
+          selectPost(selectedIndex);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          selectedIndex = (selectedIndex + 1) % postLinks.length;
+          selectPost(selectedIndex);
+          break;
+        case 'Enter':
+          e.preventDefault();
+          (postLinks[selectedIndex] as HTMLElement).click();
+          break;
+        case 'Escape':
+          e.preventDefault();
+          window.location.href = '/';
+          break;
+      }
+    });
+
+    // Click to select
+    postLinks.forEach((link, index) => {
+      link.addEventListener('click', (e) => {
+        selectPost(index);
+      });
+    });
+  </script>
+</body>
+</html>

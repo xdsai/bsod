@@ -1,0 +1,61 @@
+---
+import Modal from './Modal.astro';
+---
+
+<Modal id="contact" title="CONTACT :: NETWORK_DIAGNOSTICS">
+  <div class="contact-section glow">
+    <p>*** NETWORK ADAPTER INFORMATION</p>
+    <p>*** Establishing Connection Protocols</p>
+    <p>&nbsp;</p>
+
+    <p><strong>*** Network Interface Controller (NIC) Information:</strong></p>
+    <p>MAC Address: 00:1A:2B:3C:4D:5E</p>
+    <p>IPv4 Address: 192.168.1.42</p>
+    <p>IPv6 Address: fe80::21a:2bff:fe3c:4d5e</p>
+    <p>&nbsp;</p>
+
+    <p><strong>SMTP PROTOCOL [Port 25]:</strong></p>
+    <p>  Address: <a href="mailto:alex@jndl.dev" class="contact-link">alex@jndl.dev</a></p>
+    <p>  Status: ACTIVE</p>
+    <p>&nbsp;</p>
+
+    <p><strong>GIT PROTOCOL [Port 9418]:</strong></p>
+    <p>  Host: <a href="https://github.com/jndl" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/jndl</a></p>
+    <p>  Status: CONNECTED</p>
+    <p>&nbsp;</p>
+
+    <p><strong>HTTPS PROTOCOL [Port 443]:</strong></p>
+    <p>  Host: <a href="https://linkedin.com/in/jndl" target="_blank" rel="noopener noreferrer" class="contact-link">linkedin.com/in/jndl</a></p>
+    <p>  Status: LISTENING</p>
+    <p>&nbsp;</p>
+
+    <p>*** All network connections established successfully.</p>
+  </div>
+</Modal>
+
+<style>
+  .contact-section p {
+    margin: 0;
+    line-height: 1.25;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .contact-section strong {
+    font-weight: 900;
+    color: var(--bsod-text);
+  }
+
+  .contact-link {
+    color: var(--bsod-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--bsod-text);
+    font-weight: 700;
+  }
+
+  .contact-link:hover {
+    background: var(--bsod-text);
+    color: var(--bsod-blue);
+    text-shadow: none;
+  }
+</style>

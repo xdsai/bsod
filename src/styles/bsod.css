@@ -4,9 +4,9 @@
   --bsod-text: #FFFFFF;
   --bsod-gray: #AAAAAA;
 
-  /* CRT effects */
-  --scanline-opacity: 0.15;
-  --flicker-opacity: 0.03;
+  /* CRT effects - more aggressive */
+  --scanline-opacity: 0.25;
+  --flicker-opacity: 0.08;
 }
 
 * {
@@ -24,18 +24,33 @@ html, body {
 body {
   background: var(--bsod-blue);
   color: var(--bsod-text);
-  font-family: 'VGA', monospace;
+  font-family: 'Lucida BSOD', 'VT323', monospace;
   font-size: 16px;
+  font-weight: bold;
   line-height: 1.2;
+
+  /* Maximum pixelation */
   image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+
+  /* Additional blockier text rendering */
+  text-rendering: geometricPrecision;
+  transform: scale(1.0001);
+  letter-spacing: 0.5px;
 }
 
-/* Disable smooth scrolling for authentic feel */
-* {
+/* Disable ALL smooth scrolling and transitions for authentic feel */
+*,
+*::before,
+*::after {
   scroll-behavior: auto !important;
+  transition: none !important;
+  animation-timing-function: steps(1, jump-start) !important;
 }
 
 /* Selection styling */
@@ -46,6 +61,7 @@ body {
 
 /* Pixel-perfect text rendering */
 .bsod-text {
-  text-rendering: optimizeSpeed;
-  letter-spacing: 0;
+  text-rendering: geometricPrecision;
+  letter-spacing: 0.5px;
+  transform: scale(1.0001);
 }

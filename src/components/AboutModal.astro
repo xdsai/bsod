@@ -1,0 +1,51 @@
+---
+import Modal from './Modal.astro';
+---
+
+<Modal id="about" title="ABOUT :: SYSTEM_INFORMATION">
+  <div class="content-section glow">
+    <p>*** SYSTEM INFORMATION DUMP - Memory Address 0xF7A3B2C1</p>
+    <p>&nbsp;</p>
+
+    <p><strong>*** Memory Dump at 0xF7A40000:</strong></p>
+    <p>F7A40000  48 65 6C 6C 6F 20 49 27 6D 20 61 20 64 65 76 65  Hello I'm a deve</p>
+    <p>F7A40010  6C 6F 70 65 72 20 77 68 6F 20 6C 6F 76 65 73 20  loper who loves </p>
+    <p>&nbsp;</p>
+
+    <p><strong>*** Register Dump:</strong></p>
+    <p>EAX=00000000 EBX=F7A3B2C1 ECX=00000001 EDX=C0000005</p>
+    <p>&nbsp;</p>
+
+    <p><strong>PROCESSOR:</strong></p>
+    <p>[Replace this with your actual bio]</p>
+    <p>&nbsp;</p>
+    <p>I'm a developer who loves building things that live on the web.</p>
+    <p>Currently working full-time, exploring new technologies, and</p>
+    <p>occasionally writing about my experiences.</p>
+    <p>&nbsp;</p>
+    <p>When I'm not coding, you'll find me [your hobbies/interests].</p>
+    <p>&nbsp;</p>
+
+    <p><strong>*** BACKGROUND REGISTRY - 0x4A5BC600</strong></p>
+    <p>&nbsp;</p>
+    <p>[Add your background, education, what drives you, etc.]</p>
+    <p>&nbsp;</p>
+
+    <p>System Status: OPERATIONAL</p>
+    <p>Memory Check: PASSED</p>
+  </div>
+</Modal>
+
+<style>
+  .content-section p {
+    margin: 0;
+    line-height: 1.25;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .content-section strong {
+    font-weight: 900;
+    color: var(--bsod-text);
+  }
+</style>

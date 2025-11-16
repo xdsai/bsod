@@ -1,63 +1,72 @@
 /*
- * Pixel Fonts for BSOD Portfolio
+ * Authentic Windows BSOD Font Configuration
  *
- * This file defines the authentic pixel fonts for the BSOD aesthetic.
+ * Primary: Lucida BSOD - authentic Windows BSOD bitmap font from FontStruct
+ * Fallback: VT323 - pixelated terminal font from Google Fonts
  *
- * CURRENT STATUS: Using fallback fonts until authentic pixel fonts are added.
- * To get the full retro experience:
- * 1. Download PxPlus IBM VGA8 from https://int10h.org/oldschool-pc-fonts/
- * 2. Download Fixedsys Excelsior from https://github.com/kika/fixedsys
- * 3. Convert to WOFF2 format
- * 4. Place in public/fonts/
- * 5. Uncomment the src: url() lines below
+ * Note: Lucida BSOD must be manually downloaded from:
+ * https://fontstruct.com/fontstructions/show/2322862/lucida-bsod
  */
 
-/* VGA Font - Main BSOD text font (authentic Windows BSOD) */
-@font-face {
-  font-family: 'VGA';
-  /* Uncomment when font file is available:
-  src: url('/fonts/PxPlus_IBM_VGA8.woff2') format('woff2');
-  */
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
+/* Import VT323 as fallback from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=block');
 
-  /* Fallback configuration */
-  /* Using system monospace fonts until authentic pixel font is added */
-  src: local('Courier New'), local('Courier'), local('monospace');
+/* Lucida BSOD font-face declaration */
+@font-face {
+  font-family: 'Lucida BSOD';
+  src: url('/fonts/lucida-bsod.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap; /* Show fallback immediately, swap when loaded */
 }
 
-/* Fixedsys Font - Boot sequence and terminal text */
-@font-face {
-  font-family: 'Fixedsys';
-  /* Uncomment when font file is available:
-  src: url('/fonts/Fixedsys.woff2') format('woff2');
-  */
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-
-  /* Fallback configuration */
-  /* Using system monospace fonts until authentic pixel font is added */
-  src: local('Courier New'), local('Courier'), local('monospace');
-}
-
-/*
- * Additional CSS transforms to enhance the pixel aesthetic
- * when using fallback fonts
- */
 body {
-  /* Disable font smoothing for sharper, more pixelated text */
+  /* Use Lucida BSOD with VT323 fallback */
+  font-family: 'Lucida BSOD', 'VT323', monospace;
+
+  /* BOLD text like authentic Windows XP BSOD */
+  font-weight: bold;
+
+  /* Disable font smoothing for authentic pixelated look */
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 
-  /* Crisp edges for text rendering */
-  text-rendering: optimizeSpeed;
+  /* Aggressive pixelation settings */
+  text-rendering: geometricPrecision;
+
+  /* Force pixelation with subtle transform */
+  transform: scale(1.0001);
+
+  /* Blockier characters */
+  -webkit-text-stroke: 0.5px;
+
+  /* Less clean text spacing */
+  letter-spacing: 0.5px;
+
+  /* Pixelated image rendering */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
 }
 
-/* Optional: Apply transform for more pixelated look with fallback fonts */
-.pixelated-text {
+/* Apply pixelated rendering to all text elements */
+* {
+  font-family: 'Lucida BSOD', 'VT323', monospace;
+  font-weight: bold;
+  letter-spacing: 0.5px;
   image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  letter-spacing: 0;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Ensure no font smoothing anywhere */
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 }
