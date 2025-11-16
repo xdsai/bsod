@@ -18,7 +18,7 @@ i also wrench on my own motorcycles, cars, and other mechanical toys. modding th
 
 the first project i'm documenting is… this website. fun fact: i barely know frontend. and yet, here we are :D
 
-the source is on [github](https://github.com/xdsai/persephone). the code isn't pristine, but it's not a disaster either. borrow ideas or copy it 1:1—i don't mind. a terminal-style homepage isn't the most original concept, but it fits me.
+the source is on [github](https://github.com/xdsai/bsod). the code isn't pristine, but it's not a disaster either. borrow ideas or copy it 1:1—i don't mind. a bsod-style homepage isn't the most original concept, but it fits me.
 
 ## work
 
