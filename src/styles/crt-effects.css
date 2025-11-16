@@ -175,3 +175,13 @@
 .screen-shake {
   animation: screen-shake 0.4s steps(10, jump-start) both;
 }
+
+/* Disable CRT effects in reading mode */
+body.reading-mode .crt::before,
+body.reading-mode .crt::after {
+  display: none;
+}
+
+body.reading-mode .glow {
+  text-shadow: none;
+}

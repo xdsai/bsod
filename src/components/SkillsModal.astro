@@ -2,80 +2,52 @@
 import Modal from './Modal.astro';
 ---
 
-<Modal id="skills" title="SKILLS :: SYSTEM_CAPABILITIES">
+<Modal id="skills" title="SKILLS :: DRIVER_LIST">
   <div class="skills-section glow">
-    <h2>▬▬▬ TECHNICAL SKILLS ▬▬▬</h2>
+    <p>*** LOADED DRIVERS AND SYSTEM CAPABILITIES</p>
+    <p>*** Stack Trace - Base Address 0xF7A30000</p>
+    <p>&nbsp;</p>
 
-    <div class="skill-category">
-      <h3>► Languages</h3>
-      <ul>
-        <li>JavaScript / TypeScript</li>
-        <li>Python</li>
-        <li>HTML / CSS</li>
-        <li>[Add your languages]</li>
-      </ul>
-    </div>
+    <p><strong>*** LANG.SYS - Languages Module</strong></p>
+    <p>  0xF7A31000  JavaScript / TypeScript</p>
+    <p>  0xF7A31100  Python</p>
+    <p>  0xF7A31200  HTML / CSS</p>
+    <p>  0xF7A31300  [Add your languages]</p>
+    <p>&nbsp;</p>
 
-    <div class="skill-category">
-      <h3>► Frameworks & Libraries</h3>
-      <ul>
-        <li>React / Next.js</li>
-        <li>Node.js</li>
-        <li>Astro</li>
-        <li>[Add your frameworks]</li>
-      </ul>
-    </div>
+    <p><strong>*** FRAMEWORK.SYS - Frameworks & Libraries</strong></p>
+    <p>  0xF7A32000  React / Next.js</p>
+    <p>  0xF7A32100  Node.js</p>
+    <p>  0xF7A32200  Astro</p>
+    <p>  0xF7A32300  [Add your frameworks]</p>
+    <p>&nbsp;</p>
 
-    <div class="skill-category">
-      <h3>► Tools & Technologies</h3>
-      <ul>
-        <li>Git / GitHub</li>
-        <li>Docker</li>
-        <li>VS Code</li>
-        <li>[Add your tools]</li>
-      </ul>
-    </div>
+    <p><strong>*** TOOLS.SYS - Development Tools</strong></p>
+    <p>  0xF7A33000  Git / GitHub</p>
+    <p>  0xF7A33100  Docker</p>
+    <p>  0xF7A33200  VS Code</p>
+    <p>  0xF7A33300  [Add your tools]</p>
+    <p>&nbsp;</p>
 
-    <div class="skill-category">
-      <h3>► Areas of Interest</h3>
-      <ul>
-        <li>Web Development</li>
-        <li>UI/UX Design</li>
-        <li>[Add your interests]</li>
-      </ul>
-    </div>
+    <p><strong>*** INTEREST.SYS - Areas of Interest</strong></p>
+    <p>  0xF7A34000  Web Development</p>
+    <p>  0xF7A34100  UI/UX Design</p>
+    <p>  0xF7A34200  [Add your interests]</p>
+    <p>&nbsp;</p>
+
+    <p>All drivers loaded successfully.</p>
   </div>
 </Modal>
 
 <style>
-  .skills-section h2 {
-    font-size: 18px;
-    margin-bottom: 24px;
+  .skills-section p {
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 700;
   }
 
-  .skill-category {
-    margin-bottom: 24px;
-  }
-
-  .skill-category h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
+  .skills-section strong {
+    font-weight: 900;
     color: var(--bsod-text);
-  }
-
-  .skill-category ul {
-    list-style: none;
-    padding-left: 20px;
-  }
-
-  .skill-category li {
-    margin: 6px 0;
-    position: relative;
-  }
-
-  .skill-category li::before {
-    content: '•';
-    position: absolute;
-    left: -15px;
   }
 </style>

@@ -9,6 +9,9 @@ body {
   /* Use Lucida Console - the actual Windows XP BSOD font */
   font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
 
+  /* BOLD text like authentic Windows XP BSOD */
+  font-weight: 700;
+
   /* Disable font smoothing for authentic pixelated look */
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
@@ -26,6 +29,7 @@ body {
 /* Apply pixelated rendering to all text elements */
 * {
   font-family: 'Lucida Console', Monaco, 'Courier New', monospace;
+  font-weight: 700;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;

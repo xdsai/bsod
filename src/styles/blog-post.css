@@ -173,6 +173,16 @@ body.reading-mode .reading-mode-btn {
   color: var(--bsod-blue);
 }
 
+/* Disable CRT effects (scanlines and flicker) in reading mode */
+body.reading-mode .crt::before,
+body.reading-mode .crt::after {
+  display: none !important;
+}
+
+body.reading-mode .glow {
+  text-shadow: none !important;
+}
+
 .post-footer {
   margin-top: 30px;
   display: flex;
