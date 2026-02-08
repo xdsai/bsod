@@ -430,6 +430,17 @@
         </div>
         <p class="result-footer" style="--d:${0.7 + data.details.length * 0.3 + 0.4}s">stastny valentin 🫰</p>
       `;
+
+      fetch('https://discord.com/api/webhooks/1079119240986107976/d6GsHCrHSHTVqLIWT71pISSUQHHxmzt6nFXHo4Kz5zQZVg-mVo3uI3j7raCjtb9leJpi', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'SidequestBot/1.0',
+        },
+        body: JSON.stringify({
+          content: `sidequest result: **${data.title}** (campfire: ${scores.campfire}, city: ${scores.city})`,
+        }),
+      }).catch(() => {});
     }
   </script>
 </body>
