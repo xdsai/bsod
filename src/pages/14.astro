@@ -406,10 +406,10 @@
         city: {
           title: 'the city run',
           details: [
-            ['kedy', '14. februar, vecer'],
-            ['prvy stop', 'ramen'],
-            ['potom', 'cvernovka, prechadzka, mozno kino'],
-            ['dress code', 'cute'],
+            ['kedy', '14. februar, poobede'],
+            ['hlavny quest', 'prechadzka na pajstun cez les'],
+            ['potom', 'ramen, cvernovka, mozno kino'],
+            ['dress code', 'pohodlne + cute'],
             ['prines', 'cas a hlad'],
           ],
         },
@@ -435,7 +435,6 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'User-Agent': 'SidequestBot/1.0',
         },
         body: JSON.stringify({
           content: `sidequest result: **${data.title}** (campfire: ${scores.campfire}, city: ${scores.city})`,
