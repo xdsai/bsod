@@ -94,6 +94,8 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     html, body {
@@ -106,6 +108,7 @@
       color: #e8dcc8;
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
+      -webkit-tap-highlight-color: transparent;
     }
 
     main {
@@ -185,9 +188,11 @@
       transition: border-color 0.3s ease, background 0.3s ease;
     }
 
-    .btn:hover {
-      border-color: #6a5d4e;
-      background: rgba(180, 160, 130, 0.04);
+    @media (hover: hover) {
+      .btn:hover {
+        border-color: #6a5d4e;
+        background: rgba(180, 160, 130, 0.04);
+      }
     }
 
     /* --- Questions --- */
@@ -226,9 +231,11 @@
       transition: all 0.3s ease;
     }
 
-    .option:hover {
-      border-color: #4a4035;
-      background: rgba(180, 160, 130, 0.03);
+    @media (hover: hover) {
+      .option:hover {
+        border-color: #4a4035;
+        background: rgba(180, 160, 130, 0.03);
+      }
     }
 
     .option.picked {
