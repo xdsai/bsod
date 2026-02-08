@@ -1,0 +1,429 @@
+---
+---
+
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sidequest</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🫰</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="screen active" data-screen="intro">
+      <div class="content">
+        <p class="eyebrow" style="--i:0">novy</p>
+        <h1 style="--i:1">sidequest</h1>
+        <p class="eyebrow" style="--i:2">odomknuty</p>
+        <button class="btn start-btn" style="--i:3">prijat</button>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="q1">
+      <div class="content">
+        <p class="step">i / v</p>
+        <h2>na co mas chut?</h2>
+        <div class="options">
+          <button class="option" data-path="city">pohoda</button>
+          <button class="option" data-path="campfire">dobrodruzstvo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="q2">
+      <div class="content">
+        <p class="step">ii / v</p>
+        <h2>vonku je zima. co na to?</h2>
+        <div class="options">
+          <button class="option" data-path="city">radsej dnu niekam</button>
+          <button class="option" data-path="campfire">zima je ok, prezijem</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="q3">
+      <div class="content">
+        <p class="step">iii / v</p>
+        <h2>vyber si</h2>
+        <div class="options">
+          <button class="option" data-path="city">svetla a ludia</button>
+          <button class="option" data-path="campfire">len my a tma</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="q4">
+      <div class="content">
+        <p class="step">iv / v</p>
+        <h2>kolko sidequestov naraz?</h2>
+        <div class="options">
+          <button class="option" data-path="city">viac malych</button>
+          <button class="option" data-path="campfire">jeden poriadny</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="q5">
+      <div class="content">
+        <p class="step">v / v</p>
+        <h2>co na veceru?</h2>
+        <div class="options">
+          <button class="option" data-path="city">nieco z restiky</button>
+          <button class="option" data-path="campfire">musim byt locked in, kura s ryzou pls</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="thinking">
+      <div class="content">
+        <p class="thinking-dots">...</p>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="result">
+      <div class="content" id="result-content"></div>
+    </div>
+  </main>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: radial-gradient(ellipse at center, #1a1410 0%, #0f0d0b 70%);
+      color: #e8dcc8;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+    }
+
+    main {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* --- Screens --- */
+
+    .screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    .screen.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .screen.leaving {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    /* --- Intro --- */
+
+    .screen[data-screen="intro"] .content > * {
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+      animation-delay: calc(var(--i) * 0.18s);
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: #6a6058;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 8vw, 3.5rem);
+      letter-spacing: 0.04em;
+      margin: 0.4rem 0;
+      line-height: 1;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 2.5rem;
+      background: none;
+      border: 1px solid #332e28;
+      color: #b8a88e;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      padding: 0.8rem 2.5rem;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .btn:hover {
+      border-color: #6a5d4e;
+      background: rgba(180, 160, 130, 0.04);
+    }
+
+    /* --- Questions --- */
+
+    .step {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: #4a443d;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 5vw, 1.9rem);
+      color: #e8dcc8;
+      margin-bottom: 2.5rem;
+      line-height: 1.3;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .option {
+      background: none;
+      border: 1px solid #252220;
+      color: #b8a88e;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      padding: 1.15rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .option:hover {
+      border-color: #4a4035;
+      background: rgba(180, 160, 130, 0.03);
+    }
+
+    .option.picked {
+      border-color: #8a7a65;
+      background: rgba(180, 160, 130, 0.06);
+      color: #e8dcc8;
+    }
+
+    .option.dimmed {
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    /* --- Thinking --- */
+
+    .thinking-dots {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: #6a6058;
+      letter-spacing: 0.3em;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    /* --- Result --- */
+
+    .result-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: #4a443d;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .result-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 6vw, 2.4rem);
+      color: #e8dcc8;
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.3s forwards;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+
+    .detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      opacity: 0;
+      animation: fadeIn 0.6s ease var(--d) forwards;
+    }
+
+    .detail-key {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: #4a443d;
+    }
+
+    .detail-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: #c9b99a;
+    }
+
+    .result-footer {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #6a6058;
+      opacity: 0;
+      animation: fadeIn 0.8s ease var(--d) forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Mobile --- */
+
+    @media (max-width: 380px) {
+      .screen {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+
+  <script>
+    const scores: Record<string, number> = { campfire: 0, city: 0 };
+    const flow = ['intro', 'q1', 'q2', 'q3', 'q4', 'q5', 'thinking', 'result'];
+    let step = 0;
+
+    function go(to: string) {
+      const from = document.querySelector('.screen.active') as HTMLElement;
+      const next = document.querySelector(`[data-screen="${to}"]`) as HTMLElement;
+
+      from.classList.add('leaving');
+      from.classList.remove('active');
+
+      setTimeout(() => {
+        from.classList.remove('leaving');
+        next.classList.add('active');
+
+        if (to === 'thinking') {
+          setTimeout(() => {
+            step++;
+            buildResult();
+            go(flow[step]);
+          }, 1500);
+        }
+      }, 600);
+    }
+
+    document.querySelector('.start-btn')!.addEventListener('click', () => {
+      step = 1;
+      go(flow[step]);
+    });
+
+    document.querySelectorAll('.option').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const el = e.currentTarget as HTMLElement;
+        if (el.classList.contains('picked') || el.classList.contains('dimmed')) return;
+
+        scores[el.dataset.path!]++;
+
+        el.classList.add('picked');
+        const sibling = el.parentElement!.querySelector('.option:not(.picked)');
+        if (sibling) sibling.classList.add('dimmed');
+
+        setTimeout(() => {
+          step++;
+          go(flow[step]);
+        }, 500);
+      });
+    });
+
+    function buildResult() {
+      const winner = scores.campfire >= scores.city ? 'campfire' : 'city';
+      const el = document.getElementById('result-content')!;
+
+      const results: Record<string, { title: string; details: [string, string][] }> = {
+        campfire: {
+          title: 'the dog food sidequest',
+          details: [
+            ['kedy', '14. februar, po tme'],
+            ['kde', 'niekde v lese'],
+            ['menu', 'dog food nad ohnom'],
+            ['dress code', 'teplo'],
+            ['prines', 'seba a hlad'],
+          ],
+        },
+        city: {
+          title: 'the city run',
+          details: [
+            ['kedy', '14. februar, vecer'],
+            ['prvy stop', 'ramen'],
+            ['potom', 'cvernovka, prechadzka, mozno kino'],
+            ['dress code', 'cute'],
+            ['prines', 'cas a hlad'],
+          ],
+        },
+      };
+
+      const data = results[winner];
+
+      el.innerHTML = `
+        <p class="result-label">sidequest prijaty</p>
+        <h2 class="result-title">${data.title}</h2>
+        <div class="details">
+          ${data.details.map(([k, v], i) => `
+            <div class="detail" style="--d:${0.7 + i * 0.3}s">
+              <span class="detail-key">${k}:</span>
+              <span class="detail-val">${v}</span>
+            </div>
+          `).join('')}
+        </div>
+        <p class="result-footer" style="--d:${0.7 + data.details.length * 0.3 + 0.4}s">stastny valentin 🫰</p>
+      `;
+    }
+  </script>
+</body>
+</html>
