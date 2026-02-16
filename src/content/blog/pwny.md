@@ -100,7 +100,7 @@ partly because i wanted a portable pentest tool. partly because i wanted to lear
 
 it was all of those things. especially the fun part.
 
-the code lives in a private repo. if you want to build something similar, the architecture is straightforward: nmcli for scanning, scapy for capture, aircrack-ng/aireplay-ng for the heavy lifting, hostapd/dnsmasq/nftables for the hotspot, and kivy for the ui. string it together with some threading and you've got a pocket wifi lab.
+the code is [on github](https://github.com/xdsai/pwny). if you want to build something similar or just poke around, the architecture is straightforward: nmcli for scanning, scapy for capture, aircrack-ng/aireplay-ng for the heavy lifting, hostapd/dnsmasq/nftables for the hotspot, and kivy for the ui. string it together with some threading and you've got a pocket wifi lab.
 
 ---
 
