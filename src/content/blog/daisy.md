@@ -68,4 +68,6 @@ absolutely. the initial setup took some time — wiring up the qbittorrent api, 
 
 the best automation is the kind you forget exists. daisy is that for me.
 
+daisy is open source — check it out at [github.com/xdsai/daisy](https://github.com/xdsai/daisy).
+
 — alex
