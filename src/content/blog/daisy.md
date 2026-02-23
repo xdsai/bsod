@@ -21,9 +21,10 @@ here's what happens under the hood:
 
 1. **grabs the magnet** — if you give it a url from nyaa, 1337x, subsplease, or a few other sites, it scrapes the page and extracts the magnet link automatically. no need to dig for it yourself.
 2. **downloads via qbittorrent** — it talks to qbittorrent's web api, adds the torrent, and monitors the download progress until it's done.
-3. **organizes the files** — once downloaded, it moves everything into the right place. movies go into a movies folder. shows get their own directory, named and normalized (spaces become underscores, everything lowercase). if the show folder already exists, new episodes just get merged in.
-4. **tells jellyfin** — it hits jellyfin's api to trigger a library refresh. if it's a brand new show, it creates a new library section for it automatically.
-5. **pings discord** — sends a notification to a discord channel so i know when something starts downloading and when it's done. also reports how much disk space is left.
+3. **organizes the files** — once downloaded, it moves everything into the right place. movies go into a movies folder. shows get their own directory, named and normalized. if the show folder already exists, new episodes just get merged in. everything in its right place. (radiohead, anyone?)
+4. **syncs subtitles** — if there are subtitle files in the download, daisy automatically syncs them to the video using ffsubsync. anime fansubs are notorious for being slightly off — sometimes a few hundred milliseconds, sometimes entire seconds. daisy runs a small wrapper script called jf-subsync that finds the matching video file, backs up the original subtitle, and re-times it against the audio track. this happens silently after every download, so by the time i hit play the subs are already lined up.
+5. **tells jellyfin** — it hits jellyfin's api to trigger a library refresh. if it's a brand new show, it creates a new library section for it automatically.
+6. **pings discord** — sends a notification to a discord channel so i know when something starts downloading and when it's done. also reports how much disk space is left.
 
 the whole thing runs in the background. i fire it off and forget about it.
 
