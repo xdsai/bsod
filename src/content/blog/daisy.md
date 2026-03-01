@@ -66,6 +66,43 @@ storage is a couple of drives combined into one lvm volume. movies and shows eac
 
 absolutely. the initial setup took some time — wiring up the qbittorrent api, figuring out jellyfin's library structure, handling edge cases in file naming — but now it just works. i haven't manually organized a media file in months.
 
+## the dashboard
+
+at some point i had all these moving parts — the api server, qbittorrent, autodl, jellyfin — and no single place to see what was going on. so i built a dashboard.
+
+it's a flask app running on port 8888 with a dark theme. four tabs:
+
+- **search** — full torrent search across yts, nyaa, tpb, and 1337x. type filters for movies, anime, and shows. click download on any result and you get a modal to set the name and type before it fires off to qbittorrent.
+- **downloads** — live view of all torrents with progress bars, speeds, eta, seeds and peers. pause, resume, and delete controls. updates every 2 seconds. storage meters at the top show how much space is left on each drive.
+- **autodl** — manage the auto-download query list. add or remove show names with one click. these are the shows the autodl daemon watches for on the subsplease rss feed.
+- **history** — everything the autodl daemon has automatically downloaded, with a clear button.
+
+it's exposed on the local network so i can access it from any device on my lan. no auth needed since it's not internet-facing.
+
+## automatic subtitles
+
+the latest addition is automatic subtitle downloading. when a new movie finishes downloading and gets organized, daisy now:
+
+1. waits for jellyfin to pick up the new file
+2. searches for english subtitles via the subbuzz plugin — hits subf2m, subdl, podnapisi, subscene, subsource, and yify subs
+3. picks the best match (prefers non-hearing-impaired, srt format, highest download count)
+4. downloads it through jellyfin's api so the sub file lands right next to the video
+5. runs jf-subsync to align the subtitle timing to the audio track
+
+this all happens automatically in the background. by the time i open jellyfin on my chromecast, the movie already has synced english subs ready to go. no manual searching, no timing issues, no hassle.
+
+for existing movies that were already in the library without subs, there's a batch script that goes through every movie in jellyfin, checks if it has english subtitles, and downloads + syncs them if not.
+
+## yts integration
+
+the search engine now includes yts as a primary source for movie torrents. it hits the yts api directly and returns results with proper magnet links for each quality variant — 720p, 1080p, and 2160p show up as separate results with codec info. yts is a trusted uploader so their results rank well in the scoring system.
+
+anime still goes through nyaa and tokyotosho. the search routing distinguishes content type so anime queries don't hit yts and movie queries prioritize it.
+
+## was it worth it?
+
+absolutely. the initial setup took some time — wiring up the qbittorrent api, figuring out jellyfin's library structure, handling edge cases in file naming — but now it just works. i haven't manually organized a media file in months.
+
 the best automation is the kind you forget exists. daisy is that for me.
 
 daisy is open source — check it out at [github.com/xdsai/daisy](https://github.com/xdsai/daisy).
