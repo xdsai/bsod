@@ -62,10 +62,6 @@ everything runs on a single linux box:
 
 storage is a couple of drives combined into one lvm volume. movies and shows each get their own section. nothing fancy, just enough to keep things organized.
 
-## was it worth it?
-
-absolutely. the initial setup took some time — wiring up the qbittorrent api, figuring out jellyfin's library structure, handling edge cases in file naming — but now it just works. i haven't manually organized a media file in months.
-
 ## the dashboard
 
 at some point i had all these moving parts — the api server, qbittorrent, autodl, jellyfin — and no single place to see what was going on. so i built a dashboard.
@@ -97,7 +93,7 @@ for existing movies that were already in the library without subs, there's a bat
 
 the search engine now includes yts as a primary source for movie torrents. it hits the yts api directly and returns results with proper magnet links for each quality variant — 720p, 1080p, and 2160p show up as separate results with codec info. yts is a trusted uploader so their results rank well in the scoring system.
 
-anime still goes through nyaa and tokyotosho. the search routing distinguishes content type so anime queries don't hit yts and movie queries prioritize it.
+anime still goes through nyaa. the search routing distinguishes content type so anime queries don't hit yts and movie queries prioritize it.
 
 ## was it worth it?
 
