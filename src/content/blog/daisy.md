@@ -15,85 +15,58 @@ multiply that by a dozen shows airing weekly and it gets tedious fast.
 
 ## what daisy does
 
-daisy is a python tool that sits on my home server and handles the entire flow. you give it a magnet link (or just a url from a torrent site), tell it whether it's a movie or a show, and it takes care of the rest.
+daisy is a python tool that sits on my home server and handles the entire download-to-playback pipeline. you give it a magnet link (or just a url from a torrent site), tell it whether it's a movie or a show, and it takes care of the rest:
 
-here's what happens under the hood:
-
-1. **grabs the magnet** — if you give it a url from nyaa, 1337x, subsplease, or a few other sites, it scrapes the page and extracts the magnet link automatically. no need to dig for it yourself.
-2. **downloads via qbittorrent** — it talks to qbittorrent's web api, adds the torrent, and monitors the download progress until it's done.
-3. **organizes the files** — once downloaded, it moves everything into the right place. movies go into a movies folder. shows get their own directory, named and normalized. if the show folder already exists, new episodes just get merged in. everything in its right place. (radiohead, anyone?)
-4. **syncs subtitles** — if there are subtitle files in the download, daisy automatically syncs them to the video using ffsubsync. anime fansubs are notorious for being slightly off — sometimes a few hundred milliseconds, sometimes entire seconds. daisy runs a small wrapper script called jf-subsync that finds the matching video file, backs up the original subtitle, and re-times it against the audio track. this happens silently after every download, so by the time i hit play the subs are already lined up.
-5. **tells jellyfin** — it hits jellyfin's api to trigger a library refresh. if it's a brand new show, it creates a new library section for it automatically.
-6. **pings discord** — sends a notification to a discord channel so i know when something starts downloading and when it's done. also reports how much disk space is left.
+1. **grabs the magnet** — if you give it a url from nyaa, 1337x, subsplease, or a few other sites, it scrapes the page and extracts the magnet link. no need to dig for it yourself.
+2. **downloads via qbittorrent** — talks to qbittorrent's web api, adds the torrent, monitors progress until it's done.
+3. **organizes the files** — movies go into a movies folder. shows get their own directory, named and normalized. if the show folder already exists, new episodes get merged in. everything in its right place.
+4. **handles subtitles** — two layers here. first, if the torrent comes with subtitle files (common with anime fansubs), daisy runs ffsubsync to align the timing to the audio track — fansubs are notorious for being slightly off. second, for movies, it automatically downloads english subtitles from external sources via jellyfin's subbuzz plugin (hits subf2m, subdl, podnapisi, subscene, subsource, and yify subs), picks the best match, and syncs the timing. by the time i hit play on my chromecast, subs are already there and lined up.
+5. **updates jellyfin** — triggers a library refresh so the new content appears immediately. if it's a brand new show, it creates a library section for it automatically. jellyfin handles the rest — metadata, artwork, transcoding, streaming to whatever device i'm on.
+6. **pings discord** — sends notifications when downloads start, finish, or fail. also reports disk space.
 
 the whole thing runs in the background. i fire it off and forget about it.
 
-## the api and ios shortcuts
+## searching and downloading
 
-at some point i wanted to trigger downloads from my phone. so i added a small flask api server on top of daisy. it exposes a few endpoints — search for torrents, start a download, check status.
+there are a few ways to feed daisy:
 
-i built an ios shortcut that talks to this api. i can search for something, pick a result from the list, and start the download without ever touching my computer. the api responds immediately and the download runs in the background. discord tells me when it's done.
+**the search engine** queries yts, nyaa, the pirate bay, and 1337x in parallel. yts is the primary source for movies — it returns results per quality variant (720p/1080p/2160p) with codec info. anime goes through nyaa. results are ranked by a scoring system that weighs seeders, quality, and trusted uploaders.
 
-the api is exposed outside my network through a cloudflare tunnel, so it works from anywhere. no port forwarding, no dynamic dns headaches.
+**the api server** exposes this as http endpoints — search, download, quick-download (search + grab best result in one call). it's what everything else talks to.
+
+**ios shortcuts** — i built a shortcut that hits the api. search for something from my phone, pick a result, start the download. the api is exposed through a cloudflare tunnel so it works from anywhere.
+
+**the dashboard** — a web ui for when i want more control. more on that below.
 
 ## autodl: the truly lazy part
 
-for anime that airs weekly, even opening a shortcut felt like too much effort. so there's a daemon called autodl that monitors the subsplease rss feed every 20 minutes. i give it a list of show names i'm watching, and whenever a new episode drops in 1080p, it automatically downloads it, organizes it, and updates jellyfin.
+for anime that airs weekly, even opening a shortcut felt like too much effort. there's a daemon called autodl that monitors the subsplease rss feed every 20 minutes. i give it a list of show names i'm watching, and whenever a new episode drops in 1080p, it automatically downloads it, organizes it, and updates jellyfin.
 
 i don't even know a new episode is out until i open jellyfin and it's just... there. that's the dream.
 
-## jellyfin's role
+## the dashboard
 
-jellyfin is the front end of this whole thing. it's what i actually open when i want to watch something — on my tv, phone, laptop, whatever. it handles streaming, transcoding, tracking what i've watched, subtitle support, all of it.
+with all these moving parts i wanted a single place to see what's going on. the dashboard is a flask app on port 8888 with four tabs:
 
-daisy's job is to keep jellyfin fed. every time something finishes downloading, daisy tells jellyfin to refresh its libraries. jellyfin scans the directories, picks up the new files, scrapes metadata and artwork from the internet, and presents everything nicely. from jellyfin's perspective, files just appear. it doesn't know or care how they got there.
+- **search** — full torrent search with type filters for movies, anime, and shows. click download on any result, set the name and type, and it fires off to qbittorrent.
+- **downloads** — live view of all torrents with progress bars, speeds, eta, seeds and peers. pause, resume, and delete controls. storage meters show how much space is left on each drive. updates every 2 seconds.
+- **autodl** — add or remove show names from the auto-download watch list.
+- **history** — everything the autodl daemon has grabbed, with a clear button.
 
-the two work together but stay independent. jellyfin doesn't know daisy exists. daisy just puts files in the right place and pokes the api. clean separation.
+it's on the local network so i can hit it from any device on my lan.
 
 ## the setup
 
-everything runs on a single linux box:
+everything runs on a single linux box as systemd services:
 
-- **qbittorrent-nox** — headless torrent client, runs as a systemd service
-- **jellyfin** — media server, also a systemd service
+- **qbittorrent-nox** — headless torrent client
+- **jellyfin** — media server and streaming frontend
 - **daisy api** — flask server for search and download endpoints
-- **daisy autodl** — rss monitor daemon for automatic downloads
-- **cloudflare tunnel** — exposes the api to the internet without opening ports
+- **daisy autodl** — rss monitor daemon
+- **daisy dashboard** — web ui on port 8888
+- **cloudflare tunnel** — exposes the api without opening ports
 
-storage is a couple of drives combined into one lvm volume. movies and shows each get their own section. nothing fancy, just enough to keep things organized.
-
-## the dashboard
-
-at some point i had all these moving parts — the api server, qbittorrent, autodl, jellyfin — and no single place to see what was going on. so i built a dashboard.
-
-it's a flask app running on port 8888 with a dark theme. four tabs:
-
-- **search** — full torrent search across yts, nyaa, tpb, and 1337x. type filters for movies, anime, and shows. click download on any result and you get a modal to set the name and type before it fires off to qbittorrent.
-- **downloads** — live view of all torrents with progress bars, speeds, eta, seeds and peers. pause, resume, and delete controls. updates every 2 seconds. storage meters at the top show how much space is left on each drive.
-- **autodl** — manage the auto-download query list. add or remove show names with one click. these are the shows the autodl daemon watches for on the subsplease rss feed.
-- **history** — everything the autodl daemon has automatically downloaded, with a clear button.
-
-it's exposed on the local network so i can access it from any device on my lan. no auth needed since it's not internet-facing.
-
-## automatic subtitles
-
-the latest addition is automatic subtitle downloading. when a new movie finishes downloading and gets organized, daisy now:
-
-1. waits for jellyfin to pick up the new file
-2. searches for english subtitles via the subbuzz plugin — hits subf2m, subdl, podnapisi, subscene, subsource, and yify subs
-3. picks the best match (prefers non-hearing-impaired, srt format, highest download count)
-4. downloads it through jellyfin's api so the sub file lands right next to the video
-5. runs jf-subsync to align the subtitle timing to the audio track
-
-this all happens automatically in the background. by the time i open jellyfin on my chromecast, the movie already has synced english subs ready to go. no manual searching, no timing issues, no hassle.
-
-for existing movies that were already in the library without subs, there's a batch script that goes through every movie in jellyfin, checks if it has english subtitles, and downloads + syncs them if not.
-
-## yts integration
-
-the search engine now includes yts as a primary source for movie torrents. it hits the yts api directly and returns results with proper magnet links for each quality variant — 720p, 1080p, and 2160p show up as separate results with codec info. yts is a trusted uploader so their results rank well in the scoring system.
-
-anime still goes through nyaa. the search routing distinguishes content type so anime queries don't hit yts and movie queries prioritize it.
+storage is an lvm volume spanning a couple of drives. movies and shows each get their own section. nothing fancy, just enough to keep things organized.
 
 ## was it worth it?
 
