@@ -9,19 +9,25 @@ i don't use spotify the way most people do. no discover weekly worship, no algor
 
 here's the tour.
 
-## iteration #1 (2019–2022) — 124 tracks
+## the iteration playlists
 
-this is the archive. three years of whatever i was into, frozen in amber.
+the idea behind these is simple: every song that ends up here felt *unique* to me at the time i added it. not just good — something i hadn't heard before, something that hit differently. the filter is personal. if it sounded like everything else, it didn't make the cut.
+
+i started iteration #1 in 2019 when i was 17. closed it out in 2022 with 124 tracks. iteration #2 picks up from there — 62 tracks and counting.
+
+### iteration #1 (2019–2022) — 124 tracks
+
+this is the archive. 17 to 20, frozen in amber.
 
 the backbone is underground and SoundCloud-adjacent: líue, anbuu, Savage Ga$p, sophie meiers, underscores, Cemetery Drive. bedroom producers who built fanbases in discord servers, not on radio. there's a strong pull toward lo-fi electronics — Moe Shop, DROELOE, Ramzoid — mixed with indie hip-hop that skews experimental: Injury Reserve, Rich Brian, Rav, grandson.
 
 japanese tracks show up early: anbuu's ダーリン, Reol's ウテナ, Boltex's 失望した. not anime openings — actual japanese underground. that thread never really goes away.
 
-124 tracks across three years means i wasn't using this as a dump. the vibe is late-night, headphones-on, slightly melancholic but not wallowing. internet kid music for people who grew up on forums and youtube rabbit holes. if that sounds like you, you'd probably recognize half of this.
+the vibe is late-night, headphones-on, slightly melancholic but not wallowing. internet kid music for people who grew up on forums and youtube rabbit holes. if that sounds like you, you'd probably recognize half of this.
 
-## iteration #2 (2022–present) — 62 tracks
+### iteration #2 (2022–present) — 62 tracks
 
-same DNA, evolved taste.
+same DNA, different person listening.
 
 Savage Ga$p is practically a resident — four or five tracks, collabs with KAMAARA and Witchouse 40k. the emo-internet-rap thing didn't go away, it just got more refined. Cemetery Drive carries over. WHOKILLEDXIX, teeawgo, and 100 gecs round out the chaotic end.
 
@@ -29,7 +35,7 @@ the big shift is how much game and anime music bleeds in. Cyberpunk 2077's sound
 
 then there's Fleetwood Mac's *Dreams* sitting casually in the middle of all this. and BADBADNOTGOOD's *Time Moves Slow*. classics that just belong somehow.
 
-still curated. still nocturnal. wider range.
+still curated. still nocturnal. wider range. taste changes between 17 and 24 — these playlists are the record of that.
 
 ## bangeritos españolos — 50 tracks
 
