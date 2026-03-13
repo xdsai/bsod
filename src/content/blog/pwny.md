@@ -1,13 +1,13 @@
 ---
 title: "pwny: a wifi pentesting kiosk that fits in your pocket"
 date: 2026-02-16
-description: "how i built a touchscreen wifi hacking tool on a raspberry pi 5 — from handshake capture to rogue hotspot."
+description: "how i built a touchscreen wifi hacking tool on a raspberry pi 5."
 tags: ["security", "raspberry-pi", "wifi", "python"]
 ---
 
 hey.
 
-so i built a thing. it's called **pwny** — a fullscreen touchscreen wifi pentesting kiosk that runs on a raspberry pi 5 with a tiny 480x320 spi display. you tap your way through scanning networks, deauthing clients, capturing wpa handshakes, cracking passwords, and even spinning up a rogue hotspot that bridges through a cracked network. all from a device that fits in your hand.
+so i built a thing. it's called **pwny**, a fullscreen touchscreen wifi pentesting kiosk that runs on a raspberry pi 5 with a tiny 480x320 spi display. you tap your way through scanning networks, deauthing clients, capturing wpa handshakes, cracking passwords, and even spinning up a rogue hotspot that bridges through a cracked network. all from a device that fits in your hand.
 
 this is the kind of project i build for fun and then realize i should probably write about.
 
@@ -15,7 +15,7 @@ this is the kind of project i build for fun and then realize i should probably w
 
 i wanted a self-contained wifi auditing tool. something portable that doesn't need a laptop. plug in a usb wifi adapter that supports monitor mode, boot up the pi, and you've got a handheld pentesting station with a gui you can actually use with your thumbs.
 
-no x11, no wayland, no desktop environment. the gui renders directly via sdl2's kmsdrm backend — straight to the framebuffer. the touchscreen talks through an ads7846 spi controller with calibrated coordinate inversion to match the physical screen orientation. it's janky in the best way.
+no x11, no wayland, no desktop environment. the gui renders directly via sdl2's kmsdrm backend, straight to the framebuffer. the touchscreen talks through an ads7846 spi controller with calibrated coordinate inversion to match the physical screen orientation. it's janky in the best way.
 
 ## hardware
 
@@ -41,7 +41,7 @@ tap a network to select it as your target.
 
 ### 2. attack
 
-this is where it gets fun. entering the attack screen fires up monitor mode on the usb adapter — creates a `mon1` interface, tunes to the target's channel (with full dfs support for 5ghz), and initializes scapy for packet capture.
+this is where it gets fun. entering the attack screen fires up monitor mode on the usb adapter, creates a `mon1` interface, tunes to the target's channel (with full dfs support for 5ghz), and initializes scapy for packet capture.
 
 two main buttons here:
 
@@ -58,7 +58,7 @@ once you've captured a handshake, you crack it. two modes:
 
 **rng brute force** — toggle character sets (lowercase, uppercase, digits, special chars), set a min/max length, and it generates every permutation with `itertools.product` and pipes them into aircrack-ng via stdin. the combination counter shows you exactly how futile (or feasible) your attempt is before you start.
 
-cracked passwords get stored in `pcap_info.json` and are available everywhere in the app — the attack screen, pcap browser, and leech ap all know the password once it's cracked.
+cracked passwords get stored in `pcap_info.json` and are available everywhere in the app. the attack screen, pcap browser, and leech ap all know the password once it's cracked.
 
 ### 4. leech ap
 
@@ -90,7 +90,7 @@ some of the more interesting technical bits:
 
 ## the gui
 
-the whole ui is built in kivy, coded entirely in python — no kv language files. 480x320 is tiny, so every pixel matters. custom `APRow` widgets with rounded rectangles and accent bars for selection. a `MetricBar` at the top of every screen showing cpu/ram/disk/temp. scrollable logs. popup dialogs for confirmations.
+the whole ui is built in kivy, coded entirely in python, no kv language files. 480x320 is tiny, so every pixel matters. custom `APRow` widgets with rounded rectangles and accent bars for selection. a `MetricBar` at the top of every screen showing cpu/ram/disk/temp. scrollable logs. popup dialogs for confirmations.
 
 it runs as a systemd service (`kivy-pwny.service`) that auto-starts on boot, takes over tty1, and renders fullscreen. the touchscreen calibration is handled by the launch script that auto-detects the ads7846 event node and writes kivy's hidinput config with inverted axes and pressure thresholds.
 

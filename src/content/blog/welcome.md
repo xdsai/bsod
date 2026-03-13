@@ -12,7 +12,7 @@ you found this place—by accident or on purpose. either way, welcome! this is m
 
 i'm alex. born in 2002 (you can do the math on how old i am). i like hands-on, practical things more than theory. in my free time i write code—everything from small automations to bigger tools i think are useful.
 
-i also wrench on my own motorcycles, cars, and other mechanical toys. modding them is my happy place: making something non-conventional and tailored to my taste. my sense of what "looks right" has evolved over the years—subjective, sure—but i tend to see projects through until they're *almost* perfect before moving on.
+i also wrench on my own motorcycles, cars, and other mechanical toys. modding them is my happy place: making something non-conventional and exactly the way i want it. my sense of what "looks right" has evolved over the years—subjective, sure—but i tend to see projects through until they're *almost* perfect before moving on.
 
 ## this site
 

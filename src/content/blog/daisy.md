@@ -15,7 +15,7 @@ multiply that by a dozen shows airing weekly and it gets tedious fast.
 
 ## what daisy does
 
-daisy is a python tool that sits on my home server and handles the entire download-to-playback pipeline. you give it a magnet link (or just a url from a torrent site), tell it whether it's a movie or a show, and it takes care of the rest:
+daisy is a python tool that sits on my home server and handles everything from download to playback. you give it a magnet link (or just a url from a torrent site), tell it whether it's a movie or a show, and it takes care of the rest:
 
 1. **grabs the magnet** — if you give it a url from nyaa, 1337x, subsplease, or a few other sites, it scrapes the page and extracts the magnet link. no need to dig for it yourself.
 2. **downloads via qbittorrent** — talks to qbittorrent's web api, adds the torrent, monitors progress until it's done.
@@ -70,10 +70,8 @@ storage is an lvm volume spanning a couple of drives. movies and shows each get 
 
 ## was it worth it?
 
-absolutely. the initial setup took some time — wiring up the qbittorrent api, figuring out jellyfin's library structure, handling edge cases in file naming — but now it just works. i haven't manually organized a media file in months.
+absolutely. the initial setup took some time (wiring up the qbittorrent api, figuring out jellyfin's library structure, handling edge cases in file naming) but now it just works. i haven't manually organized a media file in months.
 
-the best automation is the kind you forget exists. daisy is that for me.
-
-daisy is open source — check it out at [github.com/xdsai/daisy](https://github.com/xdsai/daisy).
+daisy is open source, check it out at [github.com/xdsai/daisy](https://github.com/xdsai/daisy).
 
 — alex
