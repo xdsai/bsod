@@ -119,7 +119,7 @@ certpulse is positioned for exactly this moment. automated discovery, multi-sour
 
 the mvp is complete — 15 implementation phases done. api, worker, frontend, cloud integrations, ct monitoring, alerts, billing, team management, api keys, landing page, blog, legal pages. stripe is in test mode pending business verification.
 
-the code is at [github.com/xdsai/certpulse](https://github.com/xdsai/certpulse). the product is at [certpulse.dev](https://certpulse.dev).
+check it out at [certpulse.dev](https://certpulse.dev).
 
 ---
 
