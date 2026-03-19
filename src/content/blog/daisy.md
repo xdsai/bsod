@@ -44,6 +44,16 @@ for anime that airs weekly, even opening a shortcut felt like too much effort. t
 
 i don't even know a new episode is out until i open jellyfin and it's just... there. that's the dream.
 
+## letterboxd watchlist: the even lazier part
+
+autodl solved anime. but for movies i was still doing the manual thing — see something interesting, open a shortcut, search, download. then i realized i already have a place where i save movies i want to watch: my letterboxd watchlist.
+
+so now daisy watches it. a daemon polls my letterboxd watchlist every 2 minutes, and when a new movie shows up, it searches for torrents and picks the best one automatically. the trick is that "best" is subjective — you want 1080p, good seeders, a trusted source, reasonable file size — so instead of writing a bunch of heuristics, i just ask an llm.
+
+the watchlist daemon sends the search results to a local claude proxy and asks it to pick the best 1080p torrent. it evaluates seeders, source quality (prefers yts, bluray, web-dl), file size (1-5gb sweet spot), and returns either a pick or "SKIP" if nothing looks good. the selected torrent gets sent to the daisy api and the normal pipeline takes over — download, organize, subtitles, jellyfin, discord notification.
+
+movies i've already processed get tracked in `watchlist_seen.json` so nothing gets downloaded twice. the whole loop is: add a movie on letterboxd from my phone → it shows up in jellyfin a few minutes later. zero interaction on my end.
+
 ## the dashboard
 
 with all these moving parts i wanted a single place to see what's going on. the dashboard is a flask app on port 8888 with four tabs:
@@ -63,6 +73,7 @@ everything runs on a single linux box as systemd services:
 - **jellyfin** — media server and streaming frontend
 - **daisy api** — flask server for search and download endpoints
 - **daisy autodl** — rss monitor daemon
+- **daisy watchlist** — letterboxd monitor daemon
 - **daisy dashboard** — web ui on port 8888
 - **cloudflare tunnel** — exposes the api without opening ports
 
