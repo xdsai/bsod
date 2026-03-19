@@ -7,7 +7,7 @@ tags: ["seo", "python", "automation", "cloudflare"]
 
 i have a few sites. jndl.dev, snackr.food, certpulse.dev — and whenever i'd publish a new page or blog post, i'd do the same dance: update the sitemap (or hope the framework did it right), go to google search console and manually request indexing, maybe remember that bing has its own webmaster tools, definitely forget about yandex and naver.
 
-so i built webdex to do all of it for me.
+so i built webdex to do all of it for me. it's [open source under MIT](https://github.com/xdsai/webdex) — if you have sites and hate manually submitting them to search engines, this might save you some time.
 
 ## what it does
 
@@ -40,8 +40,9 @@ the crawler is a breadth-first traversal with a few pragmatic constraints:
 - **smart seeding** — tries sitemap.xml, sitemap-index.xml, and robots.txt before falling back to just crawling from `/`
 - **url normalization** — strips fragments, query parameters, and trailing slashes so you don't get duplicates
 - **content filtering** — skips anything with an asset extension (css, js, images, fonts, pdf, video) and known non-content paths like `/api/`, `/admin/`, `/auth/`
+- **no javascript rendering** — it parses raw html only. if your pages are fully client-rendered spa's with no server html, the crawler won't find your links. seed those via sitemap instead.
 
-it uses httpx for async requests and beautifulsoup for parsing links out of html. nothing fancy, just reliable.
+it uses httpx and beautifulsoup for parsing links out of html. nothing fancy, just reliable.
 
 ## sitemap strategies
 
@@ -51,22 +52,21 @@ different sites need different approaches, so webdex supports two strategies per
 
 **verify** — for sites like this one (astro generates sitemaps automatically). webdex crawls the site, fetches the live sitemap, and checks that they match. if the crawler found pages the sitemap missed, you'll know about it.
 
-my current config:
+example config:
 
 ```yaml
 sites:
-  - domain: snackr.food
-    repo: /home/alex/repos/snackr-webpage
+  - domain: example.com
+    repo: /path/to/repo
+    sitemap_path: sitemap.xml
     sitemap_strategy: managed
 
-  - domain: jndl.dev
-    repo: /home/alex/repos/bsod
+  - domain: blog.example.com
+    repo: /path/to/blog
     sitemap_strategy: verify
-
-  - domain: certpulse.dev
-    repo: /home/alex/repos/certpulse
-    sitemap_strategy: managed
 ```
+
+for my own setup, snackr.food uses `managed` (webdex owns the sitemap), while jndl.dev and certpulse.dev use `verify` (astro and next.js generate their own sitemaps, webdex just checks them).
 
 ## search engine submission
 
@@ -85,7 +85,7 @@ google doesn't support indexnow (of course), so webdex uses two google apis:
 - **search console api** — submits your sitemap url so google knows where to find it
 - **indexing api** — pushes individual urls for faster crawling. officially this api is "limited to jobposting and broadcastevent schema" but in practice it works for any page. grey area, but it works.
 
-both use service account authentication. the `setup` command walks you through creating the service account in gcp and verifying your domains in search console (it even adds the dns txt records via cloudflare automatically).
+both use service account authentication. the `setup-google` command handles domain verification — it adds dns txt records via cloudflare automatically and registers your sites in search console. you just need a gcp service account with the search console, indexing, and site verification apis enabled.
 
 ## state tracking
 
@@ -98,18 +98,32 @@ every run diffs the crawled urls against the previous state:
 
 simple, effective, no redundant submissions.
 
-## setup
-
-getting it running is one command:
+## getting started
 
 ```bash
-webdex setup
+git clone https://github.com/xdsai/webdex.git
+cd webdex
+python3 -m venv .venv
+.venv/bin/pip install -e .
+cp config.example.yaml config.yaml
 ```
 
-this does three things:
-1. generates an indexnow api key (random hex string)
-2. creates a scoped cloudflare api token with minimal permissions
-3. prompts you through google service account setup and domain verification
+edit `config.yaml` with your domains and credentials, then:
+
+```bash
+webdex setup          # generates indexnow key + creates scoped cloudflare token
+webdex setup-google   # verifies domains via dns, adds to search console
+webdex run            # full cycle: crawl → update sitemaps → submit
+```
+
+there are a few more commands worth knowing:
+
+```
+webdex crawl <domain>   # crawl a single domain and print discovered urls
+webdex discover         # list all domains/subdomains from cloudflare
+```
+
+use `-v` for verbose output, `-c path/to/config.yaml` for a custom config location.
 
 after that, the daily cron is just:
 
@@ -125,7 +139,7 @@ because i'd forget. every time. i'd publish a blog post, feel good about it, and
 
 webdex removes all of that. publish content, wait for the next cron run, done. every search engine that matters gets notified, every sitemap stays accurate, and i never have to open search console again.
 
-the code is at [github.com/xdsai/webdex](https://github.com/xdsai/webdex). python 3.11+, minimal dependencies, straightforward to set up.
+the code is at [github.com/xdsai/webdex](https://github.com/xdsai/webdex). python 3.11+, MIT licensed, minimal dependencies. PRs welcome.
 
 ---
 
