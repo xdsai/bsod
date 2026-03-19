@@ -98,34 +98,11 @@ every run diffs the crawled urls against the previous state:
 
 simple, effective, no redundant submissions.
 
-## getting started
+## running it
 
-```bash
-git clone https://github.com/xdsai/webdex.git
-cd webdex
-python3 -m venv .venv
-.venv/bin/pip install -e .
-cp config.example.yaml config.yaml
-```
+the cli has a handful of commands — `setup` for credentials, `setup-google` for search console verification, `discover` to list your cloudflare domains, `crawl` to probe a single site, and `run` for the full cycle.
 
-edit `config.yaml` with your domains and credentials, then:
-
-```bash
-webdex setup          # generates indexnow key + creates scoped cloudflare token
-webdex setup-google   # verifies domains via dns, adds to search console
-webdex run            # full cycle: crawl → update sitemaps → submit
-```
-
-there are a few more commands worth knowing:
-
-```
-webdex crawl <domain>   # crawl a single domain and print discovered urls
-webdex discover         # list all domains/subdomains from cloudflare
-```
-
-use `-v` for verbose output, `-c path/to/config.yaml` for a custom config location.
-
-after that, the daily cron is just:
+day to day it's just a cron job:
 
 ```bash
 0 6 * * * cd /path/to/webdex && .venv/bin/webdex run >> webdex.log 2>&1
