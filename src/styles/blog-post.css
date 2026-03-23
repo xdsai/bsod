@@ -1,11 +1,15 @@
+/* Override bsod.css overflow:hidden for blog post pages */
+html:has(.post-container),
+html:has(.post-container) body {
+  overflow: auto;
+  height: auto;
+}
+
 .post-container {
   padding: 40px;
   max-width: 900px;
   margin: 0 auto;
   min-height: 100vh;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .post-header {
