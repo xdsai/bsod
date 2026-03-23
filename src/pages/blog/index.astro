@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
 import '../../styles/fonts.css';
 import '../../styles/bsod.css';
 import '../../styles/crt-effects.css';
@@ -21,10 +22,10 @@ function formatDate(date: Date): string {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BLOG :: alex@jndl.dev</title>
-  <meta name="description" content="Blog posts and writings">
+  <BaseHead
+    title="Blog — alex@jndl.dev"
+    description="Blog posts on infrastructure security, homelab projects, automation, and the tools I build. By Alexander Jandl."
+  />
 </head>
 <body>
   <div class="crt">

@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import JsonLd from '../../components/JsonLd.astro';
 import '../../styles/fonts.css';
 import '../../styles/bsod.css';
 import '../../styles/crt-effects.css';
@@ -28,10 +30,22 @@ function formatDate(date: Date): string {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{post.data.title} :: ERROR_LOG</title>
-  <meta name="description" content={post.data.description}>
+  <BaseHead
+    title={`${post.data.title} :: ERROR_LOG`}
+    description={post.data.description}
+    type="article"
+    datePublished={post.data.date.toISOString()}
+  />
+  <JsonLd data={{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.date.toISOString(),
+    "author": { "@type": "Person", "name": "Alexander Jandl", "url": "https://jndl.dev" },
+    "publisher": { "@type": "Person", "name": "Alexander Jandl", "url": "https://jndl.dev" },
+    "url": new URL(`/blog/${post.slug}/`, Astro.site).toString()
+  }} />
 </head>
 <body>
   <div class="crt">

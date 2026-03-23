@@ -3,6 +3,8 @@ import BSODMenu from '../components/BSODMenu.astro';
 import AboutModal from '../components/AboutModal.astro';
 import SkillsModal from '../components/SkillsModal.astro';
 import ContactModal from '../components/ContactModal.astro';
+import BaseHead from '../components/BaseHead.astro';
+import JsonLd from '../components/JsonLd.astro';
 import '../styles/fonts.css';
 import '../styles/bsod.css';
 import '../styles/crt-effects.css';
@@ -11,12 +13,30 @@ import '../styles/crt-effects.css';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alex@jndl.dev</title>
-  <meta name="description" content="A retro BSOD-themed portfolio website">
+  <BaseHead
+    title="alex@jndl.dev"
+    description="Alexander Jandl — infrastructure security engineer in Bratislava. AWS, Azure, Python, Linux. Portfolio, blog, and projects."
+  />
+  <JsonLd data={{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alexander Jandl",
+    "url": "https://jndl.dev",
+    "jobTitle": "Infrastructure Security Engineer",
+    "sameAs": [
+      "https://github.com/xdsai",
+      "https://linkedin.com/in/jndl"
+    ]
+  }} />
+  <JsonLd data={{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "alex@jndl.dev",
+    "url": "https://jndl.dev"
+  }} />
 </head>
 <body>
+  <h1 class="sr-only">Alexander Jandl — Infrastructure Security Engineer</h1>
   <BSODMenu />
   <AboutModal />
   <SkillsModal />

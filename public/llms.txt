@@ -1,0 +1,16 @@
+# alex@jndl.dev
+
+> Personal portfolio and blog of Alexander Jandl.
+
+Alexander Jandl is an infrastructure security engineer based in Bratislava, Slovakia. This site is a retro BSOD-themed portfolio showcasing projects and blog posts on infrastructure, security, automation, and homelab builds.
+
+## Skills
+
+Bash, Python, Go, AWS, Azure, Linux, Docker, Terraform, Kubernetes, networking, penetration testing.
+
+## Links
+
+- Homepage: https://jndl.dev
+- Blog: https://jndl.dev/blog
+- GitHub: https://github.com/xdsai
+- LinkedIn: https://linkedin.com/in/jndl
