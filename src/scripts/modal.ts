@@ -20,13 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Listen for open modal events
 window.addEventListener('open-modal', ((e: CustomEvent) => {
   const { target } = e.detail;
-
-  // Special handling for blog (navigate to page)
-  if (target === 'blog') {
-    window.location.href = '/blog';
-    return;
-  }
-
   openModal(target);
 }) as EventListener);
 

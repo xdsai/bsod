@@ -40,18 +40,32 @@ document.addEventListener('keydown', (e) => {
       selectedIndex = (selectedIndex + 1) % menuItems.length;
       selectMenuItem(selectedIndex);
       break;
-    case 'Enter':
-      e.preventDefault();
-      openModal(menuItems[selectedIndex].getAttribute('data-target') || '');
+    case 'Enter': {
+      const target = menuItems[selectedIndex].getAttribute('data-target') || '';
+      if (target === 'blog') {
+        // Let the <a href="/blog"> navigate naturally
+        (menuItems[selectedIndex] as HTMLAnchorElement).click();
+      } else {
+        e.preventDefault();
+        openModal(target);
+      }
       break;
+    }
   }
 });
 
 // Click to select and open
 menuItems.forEach((item, index) => {
-  item.addEventListener('click', () => {
+  item.addEventListener('click', (e) => {
+    const target = item.getAttribute('data-target') || '';
+    if (target === 'blog') {
+      // Let the <a href="/blog"> navigate naturally
+      selectMenuItem(index);
+      return;
+    }
+    e.preventDefault();
     selectMenuItem(index);
-    openModal(item.getAttribute('data-target') || '');
+    openModal(target);
   });
 });
 

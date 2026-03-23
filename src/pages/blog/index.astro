@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
+import JsonLd from '../../components/JsonLd.astro';
 import '../../styles/fonts.css';
 import '../../styles/bsod.css';
 import '../../styles/crt-effects.css';
@@ -26,6 +27,21 @@ function formatDate(date: Date): string {
     title="Blog — alex@jndl.dev"
     description="Blog posts on infrastructure security, homelab projects, automation, and the tools I build. By Alexander Jandl."
   />
+  <JsonLd data={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Blog — alex@jndl.dev",
+    "url": "https://jndl.dev/blog/",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": posts.map((post, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "url": `https://jndl.dev/blog/${post.slug}/`,
+        "name": post.data.title
+      }))
+    }
+  }} />
 </head>
 <body>
   <div class="crt">
