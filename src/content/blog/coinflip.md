@@ -41,7 +41,9 @@ i know there are people who push back on this. the "it genuinely doesn't matter"
 
 i disagree. i think "it doesn't matter" is just a way of opting out of the effort it takes to figure out what you want. it's easier to say nothing matters than to sit with the discomfort of not knowing. but not knowing isn't the same as not caring. you're just skipping the part where you'd find out.
 
-and the thing is, if it truly didn't matter, you wouldn't have stopped to think about it in the first place. the fact that there's a decision at all means something in you registered a difference between the options. maybe you can't name it. maybe it's small enough that it feels silly to care about. but it's there. "it doesn't matter" is almost always "i don't want to do the work of figuring out which one i want."
+there's a more extreme version of this too. people who say nothing matters at all, on a deeper level. the nihilistic angle. "why care about any choice when none of it means anything in the end?" i have thoughts on that but it's a whole different conversation, probably its own post someday. for now i'll just say: i disagree with that too.
+
+but even setting the big existential stuff aside, if it truly didn't matter, you wouldn't have stopped to think about it in the first place. the fact that there's a decision at all means something in you registered a difference between the options. maybe you can't name it. maybe it's small enough that it feels silly to care about. but it's there. "it doesn't matter" is almost always "i don't want to do the work of figuring out which one i want."
 
 i think this is also why some people seem "indecisive." they're not actually missing a preference. the signal is just quiet. their gut is whispering instead of shouting, and the noise of overthinking drowns it out. the coin flip doesn't create a preference. it turns up the volume on one that was already there.
 
