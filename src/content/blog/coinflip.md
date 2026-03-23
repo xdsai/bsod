@@ -37,6 +37,12 @@ think about it. you have a lifetime of experiences, biases, tastes, moods. all o
 
 the coin flip is a hack for finding that lean.
 
+i know there are people who push back on this. the "it genuinely doesn't matter" crowd. they'll tell you some choices just aren't worth having a preference on, and that caring about every little decision is exhausting and pointless. i've heard it framed as being easygoing, or practical, or zen about things.
+
+i disagree. i think "it doesn't matter" is just a way of opting out of the effort it takes to figure out what you want. it's easier to say nothing matters than to sit with the discomfort of not knowing. but not knowing isn't the same as not caring. you're just skipping the part where you'd find out.
+
+and the thing is, if it truly didn't matter, you wouldn't have stopped to think about it in the first place. the fact that there's a decision at all means something in you registered a difference between the options. maybe you can't name it. maybe it's small enough that it feels silly to care about. but it's there. "it doesn't matter" is almost always "i don't want to do the work of figuring out which one i want."
+
 i think this is also why some people seem "indecisive." they're not actually missing a preference. the signal is just quiet. their gut is whispering instead of shouting, and the noise of overthinking drowns it out. the coin flip doesn't create a preference. it turns up the volume on one that was already there.
 
 ## how i actually use it
