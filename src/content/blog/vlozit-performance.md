@@ -1,7 +1,7 @@
 ---
 title: "vloz.it: making a $25/mo database serve 128k listings without catching fire"
-date: 2026-05-02
-description: "i shipped indexnow, crawlers showed up, and my database melted. here's every performance fire i fought on vloz.it and what i learned from each one."
+date: 2026-05-06
+description: "i shipped indexnow, crawlers showed up, and my database melted. here's every performance fire i fought on vloz.it over ten days, including the feature i had to kill entirely because it was burning 50k seconds of DB time per day."
 tags: ["startup", "performance", "postgres", "classifieds", "infrastructure"]
 ---
 
@@ -91,17 +91,23 @@ the brutal part: i tried to create this index during the outage. on a database a
 
 lesson learned: ship the read-shape change before the load-shape change. i uncapped pagination (more load) before adding the index that makes deep pagination cheap. should have been the other way around.
 
-## the similar listings problem
+## the similar listings problem (and why i killed it)
 
-the single biggest time-burner in the entire database was a query i barely thought about. listing detail pages show "similar listings" -- same category, similar price range, sorted by recency. 670 ms average, called 21,336 times in the measurement window. 14,286 seconds of total database time.
+the single biggest time-burner in the entire database was a query i barely thought about. listing detail pages showed "similar listings" -- same category, similar price range, sorted by recency. 670 ms average, called 21,336 times in the initial measurement window. 14,286 seconds of total database time.
 
-the query itself resists indexing. it filters on `category_slug + status + price BETWEEN` and orders by `created_at DESC`. the existing composite browse index orders by `(bumped_at DESC NULLS LAST, created_at DESC)` because that's what the category listing pages need. a "similar listings" index would need `(category_slug, created_at DESC) WHERE status = 'active'` with `price` somewhere accessible for the range filter. that's a different sort order from the browse index, and both cover most of the same rows. the write amplification of maintaining two near-identical indexes on a table that gets bulk-inserted every 2 hours by the scraper wasn't worth it for a query that can be cached.
+the query resists indexing. it filters on `category_slug + status + price BETWEEN` and orders by `created_at DESC`. the existing composite browse index orders by `(bumped_at DESC NULLS LAST, created_at DESC)` because that's what the category listing pages need. a "similar listings" index would need `(category_slug, created_at DESC) WHERE status = 'active'` with `price` somewhere accessible for the range filter. different sort order from the browse index, both covering most of the same rows. the write amplification of maintaining two near-identical indexes on a table that gets bulk-inserted every 2 hours wasn't worth it for a query that can be cached.
 
-caching was the right call. each listing detail page now writes `similar:v1:<id>` to cache with a 1-hour TTL. empty results aren't cached, which is a deliberate choice: if the database has a transient blip and returns zero rows, i don't want that empty state pinned for an hour. the next request retries the query.
+so i tried caching. three times.
 
-i initially wrote to cloudflare KV. bad idea. KV is a globally replicated key-value store, which sounds great, but it's designed for low-write, high-read workloads. the free tier caps at 1,000 writes/day. with indexnow accelerating crawl, about 6,000 unique listing IDs were getting hit per day. burned through the write quota in 4 hours.
+**attempt 1: cloudflare KV.** each listing detail page writes `similar:v1:<id>` with a 1-hour TTL. KV is globally replicated, which sounds great, but it's designed for low-write, high-read workloads. the free tier caps at 1,000 writes/day. with indexnow accelerating crawl, about 6,000 unique listing IDs were getting hit per day. burned through the write quota in 4 hours.
 
-moved to cloudflare's Cache API (`caches.default`). this is the same cache that cloudflare's CDN uses, but accessible programmatically from workers. the tradeoff: it's per-colo (each cloudflare data center has its own cache) rather than globally replicated like KV. a listing cached in frankfurt isn't cached in prague. but crawlers tend to hit from the same colo consistently, so they self-warm whichever data center they route through. worst case miss is the 670 ms postgres query, which is acceptable for a cache miss that repopulates for the next hour.
+**attempt 2: cloudflare Cache API.** `caches.default`, the same cache the CDN uses but accessible programmatically from workers. per-colo instead of globally replicated (each cloudflare data center has its own cache, frankfurt isn't shared with prague). crawlers should self-warm whichever colo they route through. in theory. in practice, the per-colo hit rate was only about 10% under crawler load because crawlers spread across many colos. so 90% of requests still hit postgres.
+
+**attempt 3: just remove it.** by may 3, `pg_stat_statements` told the real story: 50,037 seconds of database time per day. 45,597 calls at 1,097 ms mean. that's not the 670 ms from the april 29 snapshot anymore -- the query got worse as listing count grew and crawler traffic intensified. it was the single biggest contributor to PgBouncer connection pool exhaustion. `storage_check.log` was full of `ECHECKOUTTIMEOUT` errors, which means every available connection in the pool was occupied by a similar-listings query that hadn't finished yet, and new requests couldn't get a connection at all.
+
+the caching approaches were band-aids on a wound that kept getting deeper. the fundamental problem wasn't cache hit rate, it was that every cache miss was a 1.1-second query on a table that was already under pressure from the scraper, view-count flushes, and crawler-driven browse queries. at 45k calls/day with a 10% cache hit rate, that's still 40k+ uncached queries hammering the same overloaded database.
+
+so i removed the feature entirely. dropped the query, the component, the props, the i18n keys, everything. the listing detail page renders fine without it. like the carousel before it, similar listings was low-engagement filler content that was dominating database load at scale.
 
 ## 81,000 row-locking UPDATEs
 
@@ -221,9 +227,11 @@ kept it. the 22 MB is worth it as insurance.
 
 **cosmetic features shouldn't be load-bearing.** the carousel was filler content. but it was wired into the homepage health check, which meant when it failed, nothing else cached either. optional components should fail silently, not take down the critical path.
 
-**the embarrassingly simple fixes are the best ones.** removing a count CTE: 1,786 ms to 74 ms. reading from a KV blob instead of 20 parallel count queries: 5-7 seconds to 30 ms. removing a carousel nobody clicked: eliminated an entire outage category. none of these were clever. they were just obvious in retrospect.
+**the embarrassingly simple fixes are the best ones.** removing a count CTE: 1,786 ms to 74 ms. reading from a KV blob instead of 20 parallel count queries: 5-7 seconds to 30 ms. removing a carousel nobody clicked: eliminated an entire outage category. killing similar listings: 50,037 seconds/day of DB time gone overnight. none of these were clever. they were just obvious in retrospect.
 
-the site's been stable for the last couple days. buffer cache hit ratio is at 99.48%. the scraper runs every 2 hours without WAL contention. crawlers can walk as deep as they want without wedging anything.
+**sometimes the right optimization is deletion.** two of the biggest wins in this whole saga were removing features, not optimizing them. the carousel and similar listings were both "nice to have" UI elements that became existential threats to the database under real traffic. the instinct is always to make the query faster or cache it better. sometimes the honest answer is that the feature isn't worth what it costs.
+
+three days without an outage now. buffer cache hit ratio is back at 99.48%. the scraper runs every 2 hours without WAL contention. crawlers can walk as deep as they want without wedging anything. PgBouncer pool stays healthy because the queries that used to monopolize connections don't exist anymore.
 
 i'm sure something else will break. but at least now i know what to look at first.
 
