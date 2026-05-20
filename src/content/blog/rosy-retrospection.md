@@ -13,11 +13,13 @@ and you feel it constantly if you pay attention.
 
 ---
 
-you remember the hike. the one where you got to that ridge right before golden hour and the valley opened up and everything was quiet except wind. you remember that. you tell people about that.
+i hiked kosciuszko in converse. in snow. that's the version i tell people, and it sounds like a fun story. an adventure. the kind of thing you'd put in a montage.
 
-you don't tell them about the two hours before it where your knees were screaming and you were out of water and genuinely questioning why you thought this was a good idea. you don't mention the blister that took a week to heal. or that you almost turned back at the switchback because the trail markers disappeared and you weren't sure you were even going the right way anymore.
+here's what actually happened. the night before, it rained into the tent. zero degrees celsius, sleeping bags rated for thirteen. everything soaked — clothes, bags, the floor of the tent. you're lying there in a wet sleeping bag that's doing nothing, shivering, waiting for morning because sleep stopped being an option hours ago.
 
-but the view from the ridge? that's the memory. the rest is footnotes your brain filed away and slowly deleted.
+then you get up and hike anyway because what else are you going to do. and every step on the piste is a coin flip. one foot lands fine, the next one punches through and you're knee-deep, shin-deep, sometimes thigh-deep in snow, in flat canvas shoes that were never meant for this. people are skiing past you. laughing. having a normal time. you're pulling your leg out of a hole for the hundredth time and genuinely questioning every decision that led here.
+
+but the summit? standing up there in converse, soaked, frozen, looking out at all of it? that's the memory. that's what i tell people about. the tent, the rain, the fifty-centimeter snow traps — those are footnotes my brain filed away and slowly deleted.
 
 ---
 
@@ -41,7 +43,7 @@ this is why "the good old days" is a universal phrase across every culture and l
 
 and then the evening comes.
 
-there's a reason every piece of advice about breakups includes some version of "don't text after 10pm." there's a reason the no-contact rule exists. it's not willpower theater. it's neuroscience.
+you've probably heard some version of "don't make decisions after 8pm." it sounds like throwaway self-help advice. it's not. there's a mechanical reason these memories hit harder at night, and it has nothing to do with discipline or weakness.
 
 your prefrontal cortex — the part that handles impulse control, rational thinking, long-term planning — runs on a budget. it's a muscle, and it fatigues. by the time you've made a full day's worth of decisions, resisted a full day's worth of impulses, held yourself together through a full day of being a functioning person, it's spent. psychologists call this ego depletion. roy baumeister's research showed it consistently: self-control is a finite daily resource, and by evening you're running on fumes.
 
@@ -51,19 +53,17 @@ but it's worse than that. during the day your brain is occupied. it has tasks, i
 
 so now you have a tired prefrontal cortex that can't regulate anything, a limbic system running the show, and a default mode network actively surfacing old memories — memories that have already been edited by rosy retrospection and stripped of their negative affect by fading affect bias.
 
-that's the 11pm cocktail. that's why you're suddenly convinced it was all good and you ruined it and maybe one text wouldn't hurt.
-
 cortisol plays into this too. it peaks in the morning — it's what wakes you up, keeps you alert, helps you regulate emotional responses. by night it's at its lowest point. melatonin is rising, preparing you for sleep, but before sleep comes this window where you're awake, emotionally unguarded, and your brain is running a highlight reel of everything you've lost.
 
-this is why the "don't make decisions after 8pm" advice works. it's not about the clock. it's about the neurochemical state you're in. the version of you that exists at 11:30pm on a tuesday with spotify playing something you used to listen to together — that version of you is chemically, structurally different from the one that exists at 10am with coffee and daylight and things to do. you are not the same decision-maker. you're not even close.
+that's the 11pm cocktail. a neurochemical state where your rational brain is offline, your emotional brain is driving, and your memory system is feeding it a curated highlight reel that rosy retrospection has been editing for months.
 
-and the memory that surfaces at that hour is not the real memory. it's the edited one. the one your brain has been softening for months. you're not missing them. you're missing a version of them that your brain manufactured to be easier to carry, and you're feeling it in a neurochemical state designed to make you act on it.
+this is why the advice works. the version of you that exists at 11:30pm on a tuesday — that version is chemically, structurally different from the one that exists at 10am with coffee and daylight and things to do. you are not the same decision-maker. you're not even close. the feelings that surface at that hour are real feelings, but they're responding to edited memories in a compromised state. that's the whole trap.
 
-that's the trap. rosy retrospection builds the fantasy. nighttime removes the guardrails. and suddenly you're three months deep into moving on, but your thumb is hovering over a conversation you archived and never deleted.
+it applies to everything — old friendships you're tempted to reopen, exes you almost text, life decisions that feel urgent at midnight and absurd by breakfast. the mechanism is the same every time. rosy retrospection builds the fantasy. nighttime removes the guardrails.
 
 ---
 
-the morning comes and you see it clearly again. the fog lifts. cortisol rises, the prefrontal cortex comes back online, the DMN quiets down because you have things to do. and you're grateful you didn't send it. or you did send it, and now you're reading it back in daylight and it feels like someone else wrote it.
+the morning comes and you see it clearly again. the fog lifts. cortisol rises, the prefrontal cortex comes back online, the DMN quiets down because you have things to do. and whatever felt so urgent last night just... doesn't anymore. or you acted on it, and now you're looking at what you did in daylight and it feels like someone else made that call.
 
 in a way, someone else did.
 
