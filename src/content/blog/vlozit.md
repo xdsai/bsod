@@ -39,13 +39,27 @@ a new platform doing 500 listings a day doesn't have that problem. SMS verificat
 
 bank verification becomes necessary at bazos-level volume. that would be a nice problem to have.
 
-## what i'm building
+## what i've built
 
-vloz.it is a classifieds platform for slovakia and czech republic. that's it. not a marketplace, not a social network, not an "AI-powered shopping experience." a bulletin board where people post things they want to sell and other people contact them about it. same model bazos has used for two decades.
+vloz.it is a classifieds platform for slovakia and czech republic. not a marketplace, not a social network, not an "AI-powered shopping experience." a bulletin board where people post things they want to sell and other people contact them about it. same model bazos has used for two decades.
 
-the differences are in execution. search that uses AND logic instead of OR (on bazos, searching "red couch" returns every red thing and every couch separately, which is genuinely insane for a search engine in 2026). phone numbers encrypted before storage instead of sitting in plaintext. a UI that doesn't look like it was last updated when firefox 1.0 shipped.
+the stack: sveltekit 2 with svelte 5 on cloudflare workers for edge-rendered SSR. supabase postgres (Pro tier, frankfurt) as the primary datastore. upstash redis for sessions, OTP codes, rate limiting, and buffered view counts. cloudflare KV for pre-computed homepage and category data. R2 for user-uploaded images. GoSMS.eu for phone verification. stripe for listing bumps. sentry for error tracking (split projects for browser and worker). the whole thing serves three locales -- slovak, czech, and english -- with full i18n, each seeing a filtered view of listings from their country.
 
-the chicken-and-egg problem with marketplaces is that nobody posts on a platform with no listings, and nobody browses a platform with no listings. i solved that by scraping bazos. a python script runs every two hours on a VPS, pulls listings from bazos.sk and bazos.cz, and indexes them on vloz.it. users see real inventory from day one. native listings grow alongside the scraped ones over time.
+the differences from bazos are in execution:
+
+**search that actually works.** postgres full-text search with a trigram similarity fallback for fuzzy matching. on bazos, searching "red couch" returns every red thing and every couch separately because it uses OR logic. on vloz.it, FTS with synonym expansion handles diacritics-insensitive matching ("kolo" finds "kólo") and the trigram fallback catches typos ("iphon" still finds "iphone"). search results paginate with cursor-based navigation instead of total counts, which keeps the query fast regardless of result set size.
+
+**phone numbers encrypted at rest.** AES-256-GCM via web crypto. the encrypted blob lives in a separate `phone_numbers` table, keyed by an HMAC-SHA256 hash of the phone number. decryption only happens on a single authenticated API endpoint when a logged-in user requests to see a seller's number. on bazos, phone numbers sit in plaintext and are visible to anyone who sends 1 CZK.
+
+**phone OTP auth, not bank verification.** user submits their phone number, gets a 6-digit SMS code via GoSMS.eu, verifies it. HMAC-signed codes stored in redis with a 5-minute TTL, max 5 attempts, rate-limited to 3 sends per hour per phone hash. sessions live in redis with a 30-day TTL. no bank account required. no personal data beyond a phone number.
+
+**listing bumps via stripe.** sellers can pay to bump their listing to the top of category pages. EUR 2 or CZK 49 via stripe checkout. bump duration follows a descending schedule (7 days first bump, then 6, 5, 4... down to 1 day for repeat bumps). a cron task expires bumps automatically. this is the monetization model -- simple, opt-in, no ads.
+
+**edge caching via workers Cache API.** category browse pages cache for 10 seconds, listing detail pages for 600 seconds. country-keyed so the same URL serves each country its correct content. deep pagination on a big category went from 5,100 ms to 106 ms on a cache hit.
+
+**observability that actually exists.** four-layer stack: persistent worker tail logging to a VPS file, structured JSON request logs per hit, traced supabase client logging every database call, and a daily digest that summarizes everything into a discord post. when something breaks, there's a forensic trail. bazos has four part-time moderators and no tooling. i have zero employees and can diagnose a 3 AM outage from log files the next morning.
+
+the chicken-and-egg problem with marketplaces is that nobody posts on a platform with no listings, and nobody browses a platform with no listings. i solved that by scraping bazos. a python script runs every 2 hours on a homelab box, pulls listings from bazos.sk and bazos.cz, and indexes them on vloz.it. a separate recheck script periodically revisits scraped listings and soft-expires the ones bazos has 404'd. the database currently holds about 128,000 active listings. native user posts grow alongside the scraped ones over time.
 
 is that aggressive? yeah. but bazos scrapes other sites too, and their robots.txt doesn't disallow it. classifieds are public data. the whole point is for people to see them.
 
@@ -57,15 +71,15 @@ the honest answer is that i don't know if vloz.it will work. the bank verificati
 
 what i do know is that the structural problems at bazos aren't going away. one developer, no team, no moderation infrastructure, no messaging, no fraud detection. those are the things that created the scam problem in the first place, and bank verification doesn't fix any of them. it just makes posting more annoying.
 
-if bazos ever stumbles badly enough that people actually try something else, i want vloz.it to be the something else. and building it costs me basically nothing. the whole stack runs on cloudflare free tier and a $25/month supabase instance. i can keep this running indefinitely without it mattering financially.
+if bazos ever stumbles badly enough that people actually try something else, i want vloz.it to be the something else. and the running costs are manageable -- supabase Pro, cloudflare workers paid plan, and a homelab box running the scraper and cron jobs. i can keep this running indefinitely without it mattering financially.
 
 ## the bet
 
 the bet is simple: bazos is a single point of failure for CZ/SK classifieds, and single points of failure eventually fail. maybe not this year. maybe not because of bank verification specifically. but someday that one guy is going to retire, or the scam problem is going to get bad enough that users leave on their own, or some regulatory change is going to hit and there's no team to respond to it.
 
-when that happens, having a working alternative already live with real listings indexed is worth more than scrambling to build one from scratch.
+when that happens, having a working alternative already live with 128k listings indexed, real search, encrypted phone storage, edge caching, and a proper observability stack is worth more than scrambling to build one from scratch.
 
-in the meantime, it's a good project. i'm learning svelte 5, getting familiar with cloudflare's edge stack, and building something that people in my country might actually use. worst case, it's a portfolio piece. best case, it's the thing that catches fire when bazos finally trips.
+in the meantime, it's a good project. i've learned svelte 5, built a full edge-rendered SSR app on cloudflare workers, fought postgres into submission under real crawler traffic, and shipped something that people in my country might actually use. i wrote about the infrastructure side of that fight [here](/blog/vlozit-performance). worst case, it's a portfolio piece. best case, it's the thing that catches fire when bazos finally trips.
 
 vloz.it is live at [vloz.it](https://vloz.it).
 
