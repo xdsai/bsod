@@ -11,7 +11,9 @@ here's how it always went.
 
 every single time.
 
-and the thing is — she wasn't being difficult. i've done the exact same thing to other people. you genuinely think you don't care, and then someone suggests something and suddenly you discover that actually you do care, you just didn't know it until someone put a wrong answer in front of you. the veto is the preference. you just can't articulate it until there's something to reject.
+and the thing is — she wasn't being difficult. i've done the exact same thing to other people. you genuinely think you don't care, and then someone suggests something and suddenly you discover that actually you do care, you just didn't know it until someone put a wrong answer in front of you.
+
+i have this theory about coinflips. when you flip a coin to decide something and it lands on heads, you know instantly whether you're relieved or disappointed. the coin didn't decide for you — it just revealed what you already wanted. you were never actually 50/50. restaurant picks work the same way. "i don't care" is never true. the preference is always there, you just can't articulate it until there's something to react to. every veto is a coinflip landing on the wrong side.
 
 this is not a personality flaw. this is how people work.
 
