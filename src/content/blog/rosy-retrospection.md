@@ -23,18 +23,6 @@ but the summit? standing up there in converse, soaked, frozen, looking out at al
 
 ---
 
-and then there's people.
-
-you had someone. it ended. maybe it ended ugly, maybe it just faded out the way things do when two people slowly stop choosing each other. doesn't matter how. what matters is what happens after.
-
-six months out, you remember the 2am conversations. the inside jokes nobody else would get. the way they looked at you when you said something that actually landed. you remember feeling known.
-
-you forget the fights about nothing. the texts you reread twelve times trying to decode tone. the sunday afternoons where you were in the same room but completely alone. the slow, corrosive feeling of wanting someone to be something they're not and knowing they're doing the same thing to you.
-
-rosy retrospection doesn't care about accuracy. it cares about narrative. your brain wants a coherent story, and "it was complicated and painful and also beautiful and also nobody was wrong and also we just weren't right" is not a clean story. "i lost something good" is. so that's the version you get.
-
----
-
 old people do this on a decade scale. talk to anyone over 70 about their twenties. it was the best time of their life. they were broke, uncertain, probably scared about half the things we're scared about now. but the distance sands everything smooth. fifty years of fading affect bias turns a messy decade into a golden age.
 
 this is why "the good old days" is a universal phrase across every culture and language. it's not that the past was better. it's that your brain is incapable of storing it the way it actually was.
@@ -59,7 +47,7 @@ that's the 11pm cocktail. a neurochemical state where your rational brain is off
 
 this is why the advice works. the version of you that exists at 11:30pm on a tuesday — that version is chemically, structurally different from the one that exists at 10am with coffee and daylight and things to do. you are not the same decision-maker. you're not even close. the feelings that surface at that hour are real feelings, but they're responding to edited memories in a compromised state. that's the whole trap.
 
-it applies to everything — old friendships you're tempted to reopen, exes you almost text, life decisions that feel urgent at midnight and absurd by breakfast. the mechanism is the same every time. rosy retrospection builds the fantasy. nighttime removes the guardrails.
+it applies to everything — old friendships you're tempted to reopen, messages you almost send, life decisions that feel urgent at midnight and absurd by breakfast. the mechanism is the same every time. rosy retrospection builds the fantasy. nighttime removes the guardrails.
 
 ---
 
