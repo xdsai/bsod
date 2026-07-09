@@ -7,11 +7,11 @@ tags: [snackr, projects, building]
 
 here's how it always went.
 
-"where do you wanna eat?" "i don't care, you pick." so i'd pick. thai? "hmm, i had thai on tuesday." ok, sushi? "that's kinda expensive for a wednesday." burgers? "i'm not really feeling heavy food." and then twenty minutes later we'd be sitting on the couch eating whatever was already in the fridge, both mildly annoyed at each other for no real reason.
+"where do you wanna eat?" "i don't care, you pick." so i'd pick. thai? "hmm, i had thai on tuesday." ok, sushi? "that's kinda expensive for a wednesday." burgers? "i'm not really feeling heavy food." and then twenty minutes later we'd end up eating whatever was already in the fridge, both mildly annoyed for no real reason.
 
 every single time.
 
-and the thing is — she wasn't being difficult. i've done the exact same thing to other people. you genuinely think you don't care, and then someone suggests something and suddenly you discover that actually you do care, you just didn't know it until someone put a wrong answer in front of you.
+and the thing is — nobody in that conversation is being difficult. i've done the exact same thing to other people. you genuinely think you don't care, and then someone suggests something and suddenly you discover that actually you do care, you just didn't know it until someone put a wrong answer in front of you.
 
 it's the same thing as [the coinflip theory](/blog/coinflip) — you're never actually 50/50, you just don't know which side you're on until something forces a reaction. every veto is a coinflip landing on the wrong side.
 
@@ -35,7 +35,7 @@ it started as a dumb side project i was building between shifts. the kind of thi
 
 ## the couples problem is actually a group problem
 
-the argument i was having with my ex? everyone has it. couples, friend groups, coworkers trying to pick a lunch spot. the dynamic is always the same: one person proposes, another vetoes, nobody wants to be the one who makes the final call because if it sucks, that's on them now.
+that argument? everyone has it. couples, friend groups, coworkers trying to pick a lunch spot. the dynamic is always the same: one person proposes, another vetoes, nobody wants to be the one who makes the final call because if it sucks, that's on them now.
 
 so i built group mode. everyone in the group swipes independently, snackr finds the overlap, and spits out a place that works for everyone. no arguing. no twenty-message group chat spiral. no "i'm easy, you pick" from the person who's about to veto four restaurants in a row. the app does the negotiation so you don't have to.
 
