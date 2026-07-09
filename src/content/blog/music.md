@@ -47,13 +47,15 @@ the kind of music you'd hear in a havana club in 1967 or on a venezuelan radio s
 
 no algorithm surfaces this stuff. i found most of it through rabbit holes and film soundtracks.
 
-## dadrock — 119 tracks
+## dadrock — 100 tracks
 
 this is what my dad listens to. and yeah, it rubbed off.
 
-Enter Sandman. Sweet Child O' Mine. Highway to Hell. Stairway to Heaven. Iron Man. Master of Puppets. Purple Haze. Hotel California. every song that's ever been played at a barbecue by a guy in cargo shorts.
+Sweet Child O' Mine. Stairway to Heaven. Iron Man. Purple Haze. Hotel California. Smoke On The Water. every song that's ever been played at a barbecue by a guy in cargo shorts.
 
-but it's 119 tracks deep. that's not casual exposure. you don't put Foghat's *Slow Ride* and Blue Öyster Cult's *(Don't Fear) The Reaper* and Thin Lizzy's *The Boys Are Back In Town* on a playlist unless you've actually sat with the full catalog. Scorpions, Rush, Heart, Talking Heads, Neil Young.
+but it's 100 tracks deep. that's not casual exposure. you don't put Foghat's *Slow Ride* and Blue Öyster Cult's *(Don't Fear) The Reaper* and Lynyrd Skynyrd's *Free Bird* on a playlist unless you've actually sat with the full catalog. Dire Straits alone has six tracks — *Sultans Of Swing*, *Money For Nothing*, *Six Blade Knife*, *Down To The Waterline*, *Water Of Love*, *Once Upon A Time In The West*. Fleetwood Mac has four. Nirvana has four. RHCP has four. Neil Young, Ozzy, Eric Clapton, Led Zeppelin, Scorpions, Soundgarden, The Police, Foo Fighters.
+
+and then there's a whole section most people wouldn't expect: czech and slovak rock. Kabát shows up five times. Daniel Landa three times. Desmod three times. Aleš Brichta, Richard Müller, Vidiek, Krucipüsk, Blue Effect. this isn't a playlist that pretends rock started and ended in the anglosphere. it's what my dad actually listened to, and my dad is slovak.
 
 when Fleetwood Mac shows up in iteration #2, now you know where it comes from.
 

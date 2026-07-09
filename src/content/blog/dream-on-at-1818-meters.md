@@ -29,13 +29,13 @@ then i put the dadrock playlist on.
 
 day four. i'd come down through curral das freiras — the valley the nuns fled to when pirates raided funchal — and spent a night at the eira do serrado hotel. had a spa day. a reset. and when i started the climb up to pico do areeiro the next morning, i hit shuffle.
 
-enter sandman. highway to hell. dream on.
+iron man. smoke on the water. dream on.
 
 it is difficult to explain what happened next without sounding like i'm exaggerating. i am not exaggerating.
 
 pico do areeiro is 1818 meters. the trail up is relentless. switchbacks on volcanic rock, tourists milling around at the top with selfie sticks, but you're coming from below, from hours of climbing, carrying everything you own on your back. and somewhere around the 1600-meter mark, when my legs were screaming and my lungs were doing that thing where every breath feels like it's only reaching the top third, dream on by aerosmith started playing.
 
-steven tyler's voice cracking on "dream on, dream on, dream on" right as a lookout opened up and the entire island dropped away beneath me.
+the voice cracking on "dream on, dream on, dream on" right as a lookout opened up and the entire island dropped away beneath me.
 
 i cried again. standing there, sweating, breathing hard, crying, with classic rock in my ears and the atlantic ocean in every direction. if you'd watched me you would've thought something was wrong. nothing was wrong. everything was exactly right.
 
@@ -43,15 +43,15 @@ i cried again. standing there, sweating, breathing hard, crying, with classic ro
 
 here's the thing nobody talks about.
 
-music doesn't just accompany your mood. it creates it. psychologists call this emotional contagion — your brain reads the emotional character of a song and mirrors it internally. juslin and västfjäll mapped the mechanisms in 2008: tempo, mode, timbre, melodic contour. your nervous system treats these as emotional signals and responds accordingly. minor key, slow tempo, descending melody — your brain reads sadness and produces sadness. major key, driving rhythm, vocals that sound like they're having the best night of their life — your brain reads that too.
+music doesn't just accompany your mood. it creates it. your brain reads the emotional character of a song and mirrors it. tempo, key, the energy in the vocals — your nervous system treats all of it as emotional instruction. slow and minor and heavy? your brain produces sadness. fast and loud and confident? your brain produces that instead.
 
-this isn't metaphorical. it's measurable in heart rate variability, cortisol levels, skin conductance. put on radiohead and your body downregulates. put on sultans of swing and it upregulates. the music isn't matching how you feel. it's telling you how to feel, and your brain listens.
+this isn't subtle. put on radiohead and your whole body slows down. put on sultans of swing and it wakes up. the music isn't matching how you feel. it's telling you how to feel, and your brain listens.
 
 i don't listen to radiohead. i don't see the point. you have one life and a finite number of hours in it, and you're going to spend some of those hours voluntarily making yourself sad? listening to music that exists specifically to make you feel worse than you did before you pressed play? i genuinely do not understand this. you don't live life to be sad. you live it to be happy. melancholic music is a choice to move in the wrong direction on purpose, and i refuse to make it.
 
-i want to listen to sultans of swing and feel like mark knopfler is personally telling me everything is going to be fine. i want enter sandman at full volume on a trail. i want the version of reality where i'm winning, not the version where i'm sitting in the dark contemplating how everything is meaningless. one of those is useful. the other is self-inflicted damage dressed up as depth.
+i want to listen to sultans of swing and feel like mark knopfler is personally telling me everything is going to be fine. i want iron man at full volume on a trail. i want the version of reality where i'm winning, not the version where i'm sitting in the dark contemplating how everything is meaningless. one of those is useful. the other is self-inflicted damage dressed up as depth.
 
-this is a choice most people don't realize they're making. every time you press play, you're selecting an emotional state and injecting it directly into your nervous system. psychologists map this on two axes: valence — positive to negative — and arousal — high to low energy. radiohead sits at low valence, medium arousal. it makes you feel things, but the things are heavy. dadrock sits at high valence, high arousal. it also makes you feel things, but the things are "i am invincible and this guitar solo agrees."
+this is a choice most people don't realize they're making. every time you press play, you're picking an emotional state and injecting it directly into your nervous system. radiohead is negative energy, medium intensity. it makes you feel things, but the things are heavy. dadrock is positive energy, high intensity. it also makes you feel things, but the things are "i am invincible and this guitar solo agrees."
 
 on a mountain, exhausted, alone — that choice is the whole game.
 
@@ -59,11 +59,11 @@ on a mountain, exhausted, alone — that choice is the whole game.
 
 and it compounds.
 
-salimpoor et al. showed with PET scans in 2011 that music triggers dopamine release in the mesolimbic pathway — the same reward circuitry that fires for food, for sex, for every experience your brain considers worth repeating. but here's the part that matters: the dopamine hits *before the peak*. when you know a song, when you know the build is coming, when you know steven tyler is about to crack on that note — your brain releases the reward chemical in anticipation. you're not just feeling good. you're feeling good about feeling good that's about to happen.
+music triggers dopamine — the same chemical your brain releases for food, for sex, for anything it considers worth repeating. but here's the part that matters: the dopamine hits *before the peak*. when you know a song, when you know the build is coming, when you know the voice is about to crack on that note — your brain releases the reward chemical in anticipation. you're not just feeling good. you're feeling good about feeling good that's about to happen.
 
 stack that on top of emotional contagion and you get something closer to what i actually experienced on that mountain. my body was breaking down. my brain was simultaneously mirroring the emotional state of every song — confident, loud, alive — and flooding itself with dopamine every time a chorus approached. the mountain didn't get shorter. but i was chemically, emotionally incapable of caring that it was tall.
 
-dadrock is almost uniquely good at this. every song is in a major key, every tempo is between 100 and 130 bpm, every vocal performance sounds like the singer just kicked down a door. there's no ambiguity, no subtlety, no "maybe things are complicated." it's pure forward motion. and when your legs are failing on a volcanic switchback at 1600 meters, forward motion is the only thing you need.
+dadrock is almost uniquely good at this. most of the playlist sits between 100 and 130 bpm, and the dominant energy is loud, confident, forward-moving. even the slower tracks — *simple man*, *old man*, *breathe*, *wish you were here*, *once upon a time in the west* — carry a warmth that pulls you forward instead of dragging you down. and when your legs are failing on a volcanic switchback at 1600 meters, forward motion is the only thing you need.
 
 ---
 
@@ -79,11 +79,11 @@ and the dadrock kept playing.
 
 this is where the science stops being academic. when you're seven days into a solo hike, blistered, bruised, and facing 35 kilometers of coastline with no way out except forward, music isn't a nice-to-have. it's structural support. the first three days without it were beautiful, raw, profound in their silence. but they were also harder in a way that has nothing to do with terrain.
 
-without music, your brain turns inward. the default mode network takes over — the same system that runs rumination, self-referential thought, the 2am spirals. on a trail alone, with nothing but footsteps and wind, that network has hours of uninterrupted runtime. some of what it produces is beautiful. the PR1.3 wildcamp, the tears from happiness, the feeling of being alive — that was the DMN doing its best work. but it can also produce its worst. doubt, loneliness, the slow accumulation of discomfort with nobody to share it.
+without music, your brain turns inward. there's a mode your brain switches to when it has no external input — the thing that runs rumination, self-referential thought, the 2am spirals. on a trail alone, with nothing but footsteps and wind, that mode has hours of uninterrupted runtime. some of what it produces is beautiful. the PR1.3 wildcamp, the tears from happiness, the feeling of being alive — that was your brain doing its best work in silence. but it can also produce its worst. doubt, loneliness, the slow accumulation of discomfort with nobody to share it.
 
-music interrupts that loop. but it doesn't just give your brain something to process — it tells your brain how to feel while processing it. that's the difference between silence and dadrock. silence lets the DMN run whatever it wants, good or bad. dadrock overrides the channel. it says: you're not tired, you're not lonely, you're not wondering if this was a mistake. you're on a mountain and this guitar solo is for you.
+music interrupts that loop. but it doesn't just give your brain something to process — it tells your brain how to feel while processing it. that's the difference between silence and dadrock. silence lets your brain run whatever it wants, good or bad. dadrock overrides the channel. it says: you're not tired, you're not lonely, you're not wondering if this was a mistake. you're on a mountain and this guitar solo is for you.
 
-and when the song is right — when it's dream on at a lookout, or sweet child o' mine on a ridgeline, or highway to hell on a descent that feels like one — it doesn't just interrupt the loop. it replaces it with something that makes you want to keep walking.
+and when the song is right — when it's dream on at a lookout, or sweet child o' mine on a ridgeline, or money for nothing on a long flat stretch — it doesn't just interrupt the loop. it replaces it with something that makes you want to keep walking.
 
 ---
 
@@ -103,7 +103,7 @@ i think about that week constantly.
 
 160 kilometers. 6200 meters up. one playlist. two moments of crying — one from solitude, one from aerosmith. a river crossing, a cliff fall, blisters that took weeks to heal. lewis hamilton winning a grand prix on a phone screen held in a trembling hand.
 
-the science explains the mechanism. music mirrors emotion into your nervous system, floods you with dopamine before the chorus even hits, overrides the default mode network when it tries to drag you inward. all true. all measurable. all completely insufficient to describe what it actually feels like when the right song plays at the right moment on the right mountain.
+the science explains the mechanism. music mirrors emotion into your nervous system, floods you with dopamine before the chorus even hits, overrides your brain's tendency to spiral inward when left alone. all true. all measurable. all completely insufficient to describe what it actually feels like when the right song plays at the right moment on the right mountain.
 
 your brain is a machine that runs on inputs. change the input, change the experience. three days of silence gave me the rawest, most present version of myself. the dadrock gave me the version that could keep going when the raw version wanted to stop.
 
