@@ -22,7 +22,7 @@ the source is on [github](https://github.com/xdsai/bsod). the code isn't pristin
 
 ## work
 
-i work as an infrastructure security administrator at **ESET**. i started as a junior right after my bachelor's, moved to secAdmin I six months later, and i'm aiming for the next step. most of my day is network security—on-prem and cloud. i work with **AWS** and **Azure** (leaning AWS; their private DNS just feels more intuitive :D).
+i work as a security engineer at **Frequentis** in bratislava. project security manager on a single project, making sure all the security objectives get delivered. before this i was at **ESET** — started as a junior right after my bachelor's, moved to secAdmin I six months later.
 
 ## closing
 
